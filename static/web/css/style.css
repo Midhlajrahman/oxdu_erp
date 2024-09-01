@@ -8427,6 +8427,10 @@ only screen and (min-width: 576px) and (max-width: 767px),
 .team__thumb {
   position: relative;
   z-index: 1;
+
+}
+
+.team_card .team__thumb {
   background: #5b3db0;
   border-radius: 20px;
 }
