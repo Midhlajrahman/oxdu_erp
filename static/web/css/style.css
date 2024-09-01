@@ -544,7 +544,7 @@ input[type=color] {
   color: var(--tp-common-white);
   background-image: var(--tp-theme-3);
   padding: 0 30px;
-  height: 32px;
+  min-height: 32px;
   text-transform: capitalize;
   border-radius: 10px;
 }
@@ -7894,7 +7894,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 /*  16. EVENT CSS START
 /*----------------------------------------*/
 .event__item {
-  padding: 15px 50px;
+  padding: 25px 50px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -o-border-radius: 10px;
@@ -12383,7 +12383,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .breadcrumb__area {
-  padding-top: 150px;
+  padding-top: 100px;
 }
 
 .banner-btn a {
@@ -12423,4 +12423,8 @@ only screen and (min-width: 576px) and (max-width: 767px),
   border-radius: 5px;
   display: inline-flex;
   align-items: center;
+}
+
+.content ul {
+  padding-left: 20px;
 }
