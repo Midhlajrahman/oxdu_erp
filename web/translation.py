@@ -1,61 +1,111 @@
-from modeltranslation.translator import translator, TranslationOptions
-from .models import Course, CoursePoint,Event,Career,Blog,Team,Banner,Branch,BranchCourse,Testimonial,Endorsement,FAQ,Partner
+from modeltranslation.translator import TranslationOptions, translator
+
 from exams.models import Examination
 
+from .models import (
+    FAQ,
+    Banner,
+    Blog,
+    Branch,
+    BranchCourse,
+    Career,
+    Course,
+    CoursePoint,
+    Event,
+    Partner,
+    Team,
+    Testimonial,
+)
+
+
 class CourseTranslationOptions(TranslationOptions):
-    fields = ('course_name', 'description','duration', 'fees',)
+    fields = (
+        "course_name",
+        "description",
+        "duration",
+        "fees",
+    )
 
 
 class CoursePointTranslationOptions(TranslationOptions):
-    fields = ('content',)
+    fields = ("content",)
 
 
 class EventTranslationOptions(TranslationOptions):
-    fields = ('title', 'venue','details','platform',)
+    fields = (
+        "title",
+        "venue",
+        "details",
+        "platform",
+    )
 
 
 class CareerTranslationOptions(TranslationOptions):
-    fields = ('title', 'description','branch',)
+    fields = (
+        "title",
+        "description",
+        "branch",
+    )
 
 
 class BlogTranslationOptions(TranslationOptions):
-    fields = ('title', 'description','person_name',)
+    fields = (
+        "title",
+        "description",
+        "person_name",
+    )
 
 
 class TeamTranslationOptions(TranslationOptions):
-    fields = ('name', 'designation',)
+    fields = (
+        "name",
+        "designation",
+    )
 
 
 class BannerTranslationOptions(TranslationOptions):
-    fields = ('banner_head', 'title', 'content',)
+    fields = (
+        "banner_head",
+        "title",
+        "content",
+    )
 
 
 class BranchTranslationOptions(TranslationOptions):
-    fields = ('branch_name', 'description','location','about_branch')
+    fields = ("branch_name", "description", "location", "about_branch")
 
 
 class BranchCourseTranslationOptions(TranslationOptions):
-    fields = ('course_name','details', 'description','duration', 'fees',)
+    fields = (
+        "course_name",
+        "details",
+        "description",
+        "duration",
+        "fees",
+    )
 
 
 class TestimonialTranslationOptions(TranslationOptions):
-    fields = ('person_name', 'designation', 'review',)
-
-
-class EndorsementTranslationOptions(TranslationOptions):
-    fields = ('name', 'designation',)
+    fields = (
+        "person_name",
+        "designation",
+        "review",
+    )
 
 
 class FAQTranslationOptions(TranslationOptions):
-    fields = ('question', 'answer',)
+    fields = (
+        "question",
+        "answer",
+    )
 
 
 class PartnerTranslationOptions(TranslationOptions):
-    fields = ('name',)
+    fields = ("name",)
 
 
 class ExaminationTranslationOptions(TranslationOptions):
-    fields = ('title',)
+    fields = ("title",)
 
 
 translator.register(Course, CourseTranslationOptions)
@@ -68,7 +118,6 @@ translator.register(Banner, BannerTranslationOptions)
 translator.register(Branch, BranchTranslationOptions)
 translator.register(BranchCourse, BranchCourseTranslationOptions)
 translator.register(Testimonial, TestimonialTranslationOptions)
-translator.register(Endorsement, EndorsementTranslationOptions)
 translator.register(FAQ, FAQTranslationOptions)
 translator.register(Partner, PartnerTranslationOptions)
-translator.register(Examination,ExaminationTranslationOptions)
+translator.register(Examination, ExaminationTranslationOptions)

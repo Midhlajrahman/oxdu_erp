@@ -4,11 +4,10 @@ from tinymce.models import HTMLField
 from versatileimagefield.fields import VersatileImageField
 
 
-
 class Course(models.Model):
     MODE_CHOICES = [
-    ('Online','Online'),
-    ('Offline','Offline'),
+        ("Online", "Online"),
+        ("Offline", "Offline"),
     ]
     course_name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
@@ -18,7 +17,9 @@ class Course(models.Model):
     duration = models.CharField(max_length=10)
     fees = models.CharField(max_length=50)
     syllabus = models.FileField(upload_to="syllabus", blank=True, null=True)
-    mode =  models.CharField(max_length=128,choices=MODE_CHOICES,blank=True, null=True,default='Offline')
+    mode = models.CharField(
+        max_length=128, choices=MODE_CHOICES, blank=True, null=True, default="Offline"
+    )
 
     def __str__(self):
         return self.course_name
@@ -81,10 +82,9 @@ class Blog(models.Model):
     person_name = models.CharField(max_length=50)
     image = VersatileImageField("Blog", upload_to="blog/")
     description = HTMLField(null=True, blank=True)
-    
+
     meta_title = models.CharField(max_length=120, null=True, blank=True)
     meta_description = models.TextField(null=True, blank=True)
-    
 
     def get_absolute_url(self):
         return reverse("web:update_detail", kwargs={"slug": self.slug})
@@ -231,20 +231,6 @@ class Contact(models.Model):
         Branch, verbose_name="Branch_course", on_delete=models.CASCADE
     )
     message = models.TextField()
-
-    def __str__(self):
-        return self.name
-
-
-class Endorsement(models.Model):
-    name = models.CharField(max_length=128)
-    designation = models.CharField(max_length=128)
-    media = models.FileField(upload_to="media", max_length=500)
-
-    def is_video(self):
-        if self.media.url.endswith(".mp4"):
-            return True
-        return False
 
     def __str__(self):
         return self.name

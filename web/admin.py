@@ -17,7 +17,7 @@ class BranchCourseInline(admin.StackedInline):
 @admin.register(models.Course)
 class CourseAdmin(ImportExportActionModelAdmin):
     inlines = [CourseInline]
-    list_display = ("course_name", )
+    list_display = ("course_name",)
     prepopulated_fields = {"slug": ("course_name",)}
 
 
@@ -83,11 +83,6 @@ class BranchAdmin(ImportExportActionModelAdmin):
 @admin.register(models.CourseAppointment)
 class CourseAppointmentAdmin(ImportExportActionModelAdmin):
     list_display = ("branch_name", "course", "name", "phone", "email", "place")
-
-
-@admin.register(models.Endorsement)
-class EndorsementAdmin(ImportExportActionModelAdmin):
-    list_display = ("name", "designation", "media")
 
 
 @admin.register(models.FAQ)

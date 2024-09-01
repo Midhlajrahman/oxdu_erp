@@ -12,15 +12,14 @@ from .models import (
     Branch,
     BranchCourse,
     Career,
+    Certification,
     Course,
-    Endorsement,
     Event,
     Partner,
+    Placement,
     Subscribtion,
     Team,
     Testimonial,
-    Placement,
-    Certification
 )
 
 
@@ -35,7 +34,6 @@ def index(request):
     banner = Banner.objects.all()[:1]
     courses = Course.objects.all()
     testimonials = Testimonial.objects.all()
-    endorsements = Endorsement.objects.all()
     faqs = FAQ.objects.all()
     events = Event.objects.all()
 
@@ -45,7 +43,6 @@ def index(request):
         "testimonials": testimonials,
         "events": events,
         "banners": banner,
-        "endorsements": endorsements,
         "faqs": faqs,
     }
     return render(request, "web/index.html", context)
@@ -63,7 +60,6 @@ def about(request):
     }
     return render(request, "web/about.html", context)
 
-from django.utils.translation import activate
 
 def events(request):
     # activate('ml')
@@ -76,6 +72,7 @@ def course(request):
     courses = Course.objects.all()
     context = {"is_course": True, "courses": courses}
     return render(request, "web/course-list.html", context)
+
 
 def placement(request):
     placements = Placement.objects.all()
