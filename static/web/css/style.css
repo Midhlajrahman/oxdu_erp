@@ -460,7 +460,7 @@ input[type=color] {
 }
 
 .grey-bg-8 {
-  background: var(--tp-grey-8);
+  background: #9c27b012;
 }
 
 .grey-bg-9 {
@@ -6207,7 +6207,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .postbox__content {
-  padding: 30px 40px;
+  padding: 25px 30px;
 }
 
 @media (max-width: 575px) {
@@ -6224,7 +6224,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .postbox__title {
-  font-size: 21px;
+  font-size: 16px;
   margin-bottom: 20px;
 }
 
@@ -6257,7 +6257,7 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .postbox__meta {
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 
 .postbox__meta span {
@@ -8429,7 +8429,14 @@ only screen and (min-width: 576px) and (max-width: 767px),
 .team__thumb {
   position: relative;
   z-index: 1;
+  background: #5b3db0;
+  border-radius: 20px;
 }
+
+.team__thumb img {
+  border-radius: 20px;
+}
+
 
 .team__shape {
   position: absolute;
@@ -12400,4 +12407,17 @@ only screen and (min-width: 576px) and (max-width: 767px),
 .placements {
   padding-right: calc(var(--bs-gutter-x) * .2);
   padding-left: calc(var(--bs-gutter-x) * .2);
+}
+
+.postbox__read-more .tp-btn {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--tp-common-white);
+  background-image: var(--tp-theme-3);
+  padding: 0px 20px;
+  line-height: 2;
+  text-transform: capitalize;
+  border-radius: 5px;
+
 }
