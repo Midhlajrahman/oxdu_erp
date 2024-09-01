@@ -154,9 +154,9 @@ def branch_course_detail(request, slug):
     return render(request, "web/branch-course-details.html", context)
 
 
-def career(request):
-    career = Career.objects.all()
-    context = {"is_career": True, "careers": career}
+def careers(request):
+    careers = Career.objects.all()
+    context = {"is_career": True, "careers": careers}
     return render(request, "web/career.html", context)
 
 
@@ -169,12 +169,18 @@ def career_detail(request, slug):
             data.position = career
             data.save()
             messages.success(request, "Success! Message sent successfully.")
-            return redirect("web:career")
+            return redirect("web:career_success", slug=slug)
         print(form.errors)
     else:
         form = CareerForm(initial={"position": career.title})
     context = {"careers": career, "form": form}
     return render(request, "web/career-details.html", context)
+
+
+def career_success(request, slug):
+    career = Career.objects.get(slug=slug)
+    context = {"careers": career}
+    return render(request, "web/career-success.html", context)
 
 
 def updates(request):
@@ -202,11 +208,11 @@ def contact(request):
     return render(request, "web/contact.html", context)
 
 
-def subscribtion(request):
+def subscription(request):
     if request.method == "POST":
         email = request.POST.get("email")
-        subscribtion = Subscribtion(email=email)
-        subscribtion.save()
+        subscription = Subscribtion(email=email)
+        subscription.save()
         messages.success(request, "succsessfully saved")
         return redirect("web:index")
     return None

@@ -57,7 +57,7 @@
                               <a href="{% url 'web:branches' %}">Branches</a>
                            </li>
                              <li>
-                                <a href="{% url 'web:career' %}">Career</a>
+                                <a href="{% url 'web:careers' %}">Career</a>
                              </li>
                              <li>
                                 <a href="{% url 'web:contact' %}">Contact us</a>
@@ -72,7 +72,7 @@
 
                       <div class="footer__subscribe">
                          <p>Receive newsletter with educational materials, guidance and much more!</p>
-                         <form method="post" action="{% url 'web:subscribtion' %}">
+                         <form method="post" action="{% url 'web:subscription' %}">
                            {% csrf_token %}
                             <div class="footer__subscribe-input">
                                <input type="email" placeholder="Email" name="email">

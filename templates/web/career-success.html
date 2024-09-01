@@ -1,0 +1,41 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+
+<main>
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span><a href="{% url 'web:careers' %}">Career</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span>Career Details</span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+   <section class="contact__area pt-50 pb-120 ">
+      <div class="container">
+         <div class="row d-flex justify-content-center">
+            <div class="col-xxl-8 col-xl-8 col-lg-6">
+
+               <div class="content card p-5 my-4">
+                  <h3 class="">Application Received</h3>
+                  <p>
+                     Thank you for applying for the position of {{careers.title}}. We have received your application and will get back to you soon.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+</main>
+
+{% endblock %}

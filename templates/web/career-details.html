@@ -12,7 +12,7 @@
             <div class="breadcrumb__list breadcrumb__list-2 mb-10">
                <span><a href="{% url 'web:index' %}">Home</a></span>
                <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
-               <span><a href="{% url 'web:career' %}">Career</a></span>
+               <span><a href="{% url 'web:careers' %}">Career</a></span>
                <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
                <span>Career Details</span>
             </div>
@@ -24,40 +24,46 @@
       <div class="container">
          <h1 class="fs-1 text-center pb-30">{{careers.title}}</h1>
          <div class="row d-flex justify-content-center">
-            <div class="col-xxl-7 col-xl-7 col-lg-6">
+            <div class="col-xxl-8 col-xl-8 col-lg-6">
                <div class="content">{{careers.description |safe}}</div>
                <i>Posted On:{{careers.date}}</i>
 
-               <div class="content pt-50">
+               <div class="content card p-5 mt-4">
                   <h3 class="">Apply Now</h3>
                   <form method="post" enctype="multipart/form-data">
                      {% csrf_token %}
                      <div class="row">
                         <div class="col-xxl-6 col-xl-6 col-md-6">
                            <div class="contact__form-input">
+                              <label for="">Role</label>
                               {{ form.position }} </div>
                         </div>
                         <div class="col-xxl-6 col-xl-6 col-md-6">
                            <div class="contact__form-input">
+                              <label for="">Enter your Full Name</label>
                               {{ form.name }} </div>
                         </div>
    
                         <div class="col-xxl-6 col-xl-6 col-md-6">
                            <div class="contact__form-input">
+                              <label for="">Enter your Email</label>
                               {{ form.email }} </div>
                         </div>
                         <div class="col-xxl-6 col-xl-6 col-md-6">
                            <div class="contact__form-input">
+                              <label for="">Enter your Phone number with country code</label>
                               {{ form.phone }} </div>
                         </div>
    
                         <div class="col-xxl-12">
                            <div class="contact__form-input">
-                              {{ form.resume }} </div>
+                              <label for="">Upload Resume</label>
+                              {{ form.resume }}
+                           </div>
                         </div>
                         <div class="col-xxl-12">
                            <div class="">
-                              <button type="submit" class="tp-btn">Apply Now</button>
+                              <button type="submit" class="tp-btn py-2">Apply Now</button>
                            </div>
                         </div>
                      </div>
