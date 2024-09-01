@@ -8469,8 +8469,8 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .team__title {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   margin-bottom: 0;
 }
 
@@ -12390,9 +12390,14 @@ only screen and (min-width: 576px) and (max-width: 767px),
 }
 
 .placements .team__designation {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 300;
   color: var(--tp-text-5);
   line-height: 1.4;
-  margin-top: 8px;
+  margin-top: 0;
+}
+
+.placements {
+  padding-right: calc(var(--bs-gutter-x) * .2);
+  padding-left: calc(var(--bs-gutter-x) * .2);
 }
