@@ -36,9 +36,9 @@ INSTALLED_APPS = [
     "versatileimagefield",
     "tinymce",
     "rosetta",
-    'modeltranslation',
+    "modeltranslation",
     "web",
-    "exams"
+    "exams",
 ]
 
 
