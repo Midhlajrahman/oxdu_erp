@@ -1,0 +1,47 @@
+{% extends 'web/base.html' %}
+{% load static i18n %}
+
+
+{% block content %}
+<main>
+
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span>Application Successful </span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+
+   <section class="contact__area pt-50 pb-120">
+      <div class="container">
+         <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 mx-auto">
+               <div class="course__item white-bg transition-3 mb-30 border">
+                  <div class="course__content p-relative text-center">
+                     <h4 class="mb-4">You have successfully registered for the Scholarship Examination. Your Application ID is <span class="text-success">{{application.hallticket_number}}</span></h4>
+                     
+                     <div class="d-flex flex-wrap">
+                        <span class="flex_item"><i class="fa fa-calendar"></i> {{application.examination.date}}</span>
+                        <span class="flex_item"><i class="fa fa-clock"></i> {{application.examination.time|date:"h:i A"}}</span>
+                        <span class="flex_item"><i class="fa fa-comments"></i> {{application.examination.duration}} Minutes</span>
+                        <span class="flex_item"><i class="fa fa-language"></i> {{application.examination.language}}</span>
+                     </div>
+                     
+                     <p class="text-success mt-4">The Hallticket will be sent to your Email ID 48 Hours Before Examination</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+</main>
+
+{% endblock %}

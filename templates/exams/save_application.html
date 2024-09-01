@@ -1,0 +1,94 @@
+{% extends 'web/base.html' %}
+{% load static i18n %}
+
+
+{% block content %}
+<main>
+
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span>Apply </span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+
+   <section class="contact__area pt-50 pb-120">
+      <div class="container">
+         
+            <div class="row">
+               <div class="col-xxl-8 col-xl-8 col-lg-6 mb-4 mx-auto">
+                  <div class="contact__wrapper">
+                     <div class="section__title-wrapper mb-40">
+                        <h4 class="section__title section__title-44">Apply for Scholarship Exams</span></h4>
+                        <p>Unlock your potential and pursue your dreams with our scholarship exams. </p>
+                     </div>
+                     <form method="post" action="" class="ajax">
+                        {% csrf_token %}
+                        <div class="row">
+                           <div class="col-xxl-12 col-xl-12 col-md-12">
+                              <div class="contact__form-input">
+                                 {{ form.name.label_tag }}
+                                 {{ form.name }} </div>
+                           </div>
+                           <div class="col-xxl-6 col-xl-6 col-md-6">
+                              <div class="contact__form-input">
+                                 {{ form.place.label_tag }}
+                                 {{ form.place }} </div>
+                           </div>
+                           <div class="col-xxl-6 col-xl-6 col-md-6">
+                              <div class="contact__form-input">
+                                 {{ form.mobile.label_tag }}
+                                 {{ form.mobile }} </div>
+                           </div>
+                           <div class="col-xxl-6 col-xl-6 col-md-6">
+                              <div class="contact__form-input">
+                                 {{ form.email.label_tag }}
+                                 {{ form.email }} </div>
+                           </div>
+                           <div class="col-xxl-6">
+                              <div class="contact__form-input">
+                                 {{ form.dob.label_tag }}
+                                 {{ form.dob }} </div>
+                           </div>
+                           <div class="col-xxl-12">
+                              <div class="contact__form-input">
+                                 {{ form.educational_qualification.label_tag }}
+                                 {{ form.educational_qualification }} </div>
+                           </div>
+
+                           <div class="col-xxl-12">
+                              <button type="submit" class="tp-btn-9 w-50 mt-20">Submit Application</button>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+               <div class="col-xxl-4 col-lg-4 mb-4">
+                  <div class="course__item white-bg transition-3 mb-30 border">
+                     <div class="course__content p-relative">
+                        <h3 class="course__title mt-2 mb-4">
+                           <a href="{{exam.get_absolute_url}}">{{exam.title}}</a>
+                        </h3>
+                        <span class="d-block"><strong>Date : </strong> {{exam.date}}</span>
+                        <span class="d-block"><strong>Time :</strong> {{exam.time|date:"h:i A"}}</span>
+                        <span class="d-block"><strong>Duration :</strong> {{exam.duration}} Minutes</span>
+                        <span class="d-block"><strong>Language :</strong> {{exam.language}}</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+</main>
+
+{% endblock %}

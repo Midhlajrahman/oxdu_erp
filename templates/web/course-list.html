@@ -1,0 +1,60 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+
+<main>
+
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span>Course</span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+
+
+   <!-- course area start -->
+   <section class="course__area pt-50 pb-90">
+      <div class="container">
+         <div class="row">
+            <div class="col-xxl-12">
+               <div class="section__title-wrapper-2 text-center mb-60">
+                  <span class="section__title-pre-2">{% translate 'Enhancing learning through offline courses to develop knowledge beyond the digital realm.' %}
+                  </span>
+                  <h3 class="section__title-2">{% translate 'Our Offline Courses' %}</h3>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            {% for course in courses %}
+            <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6">
+               <div class="category__item-3 fix transition-3 white-bg mb-30">
+                  <h3 class="category__title-3">{{course.course_name}}</h3>
+                  <div class="category__list">
+                     <ul>
+                        {% for coursepoint in course.get_points %}
+                        <li><a>{{coursepoint.content}}</a></li>
+                        {% endfor %}
+                     </ul>
+                  </div>
+                  <div class="category__btn-3">
+                     <a href="{{course.get_absolute_url}}" class="tp-btn-9 w-100">View More</a>
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+      </div>
+   </section>
+   <!-- course area end -->
+</main>
+{% endblock %}

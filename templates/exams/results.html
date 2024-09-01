@@ -1,0 +1,139 @@
+{% extends 'web/base.html' %}
+{% load static i18n %}
+
+
+{% block content %}
+<main>
+
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span>Results </span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+
+   <section class="contact__area pt-50 pb-120">
+      <div class="container">
+               
+            <div class="row">
+               <div class="col-xxl-8 col-xl-8 col-lg-6 mb-4 mx-auto">
+                  <div class="course__item white-bg transition-3 mb-30 border">
+                     <div class="course__content p-relative">
+                        <h4 class="mb-4 text-center">View Scholarship Examination Results</h4>
+                        <div class="row py-4">
+                           <div class="col-md-10 mx-auto">
+                              <form action="" method="get">
+                                 <div class="row">
+                                    <div class="col-md-4">
+                                       <label for="id_hallticket">Hallticket Number</label>
+                                       <input id="id_hallticket" type="text" name="hallticket" class="form-control" placeholder="Enter Hallticket Number" style="height: 44px;" value="{{request.GET.hallticket}}">                           
+                                    </div>
+                                    <div class="col-md-4">
+                                       <label for="id_dob">Date of Birth</label>
+                                       <input id="id_dob" type="date" name="dob" class="form-control" placeholder="Enter Date of Birth" style="height: 44px;" value="{{request.GET.dob}}">                           
+                                    </div>
+                                    <div class="col-md-4">
+                                       <label for="id_submit"> </label>
+                                       <button type="submit" class="tp-btn-9 w-100">View Result</button>
+                                    </div>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+                        
+                     </div>
+                  </div>
+                  {% if application %}
+                  <div class="transition-3 mb-30">
+                     <div class="course__content p-relative">
+                        <div class="row">
+
+                           <div class="col-md-6">
+                              <div class="border p-2 text-center mb-2">
+                                 <small>Your Score is </small>
+                                 <h3>{{application.mark}}/{{application.examination.total_marks}}</h3>
+                                 <p class="text-success" style="line-height: 1.4;">{{application.message}}</p>
+                              </div>
+
+                              <div class="table-responsive">
+                                 <table class="table table-bordered">
+                                    <tr>
+                                       <th>Hallticket</th>
+                                       <td>{{application.hallticket_id}}</td>
+                                    </tr>
+                                    <tr>
+                                       <th>Name</th>
+                                       <td>{{application.name}}</td>
+                                    </tr>
+                                    <tr>
+                                       <th>Mobile</th>
+                                       <td>{{application.mobile}}</td>
+                                    </tr>
+                                    <tr>
+                                       <th>DOB</th>
+                                       <td>{{application.dob}}</td>
+                                    </tr>
+                                 </table>
+                              </div>
+                              
+                           </div>
+
+                           <div class="col-md-6">
+                              <div class="table-responsive">
+                                 <table class="table table-bordered">
+                                    <tr>
+                                       <th>Marks Secured</th>
+                                       <th>Eligibility</th>
+                                    </tr>
+                                    <tr>
+                                       <td>95 and above</td>
+                                       <td>100% Scholarship</td>
+                                    </tr>
+                                    <tr>
+                                       <td>85 - 94</td>
+                                       <td>30% Scholarship</td>
+                                    </tr>
+                                    <tr>
+                                       <td>75 - 84</td>
+                                       <td>20% Scholarship</td>
+                                    </tr>
+                                    <tr>
+                                       <td>50 - 74</td>
+                                       <td>No Scholarship</td>
+                                    </tr>
+                                    <tr>
+                                       <td>Below 50</td>
+                                       <td>Not Eligible for Admission</td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                           
+                        </div>
+                     </div>
+             
+                  </div>
+                  {% elif request.GET.hallticket %}
+                  <div class="course__item white-bg transition-3 mb-30 border">
+                     <div class="course__content p-relative text-center">
+                        <p class="mb-0">No Results Found</p>
+                     </div>
+                  </div>
+                  {% endif %}
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+</main>
+
+{% endblock %}

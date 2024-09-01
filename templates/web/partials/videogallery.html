@@ -1,0 +1,25 @@
+<section class="blog__area video-testmonail pt-55">
+    <div class="swiper textslider__active">
+        <div class="hero-marquee__grid swiper-wrapper">
+            {% for endorsement in endorsements %}
+            <div class="hero-marquee-item lazyloaded swiper-slide">
+                <div class="hero-marquee-item__info">
+                    <div class="hero-marquee-item__name">{{endorsement.name}}</div>
+                    <div class="hero-marquee-item__title">{{endorsement.designation}}</div>
+                </div>
+                <div class="hero-marquee-item__media">
+                    {% if endorsement.is_video %}
+                    <div class="hero-marquee-item__video">
+                        <video class="hero-marquee-item__video__element lozad" autoplay="" loop="" muted="" playsinline="" preload="auto">
+                            <source data-src="{{endorsement.media.url}}" type="video/mp4">
+                        </video>
+                    </div>
+                    {% else %}
+                    <img alt="" width="273" height="340" class="lozad" data-src="{{endorsement.media.url}}" />
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

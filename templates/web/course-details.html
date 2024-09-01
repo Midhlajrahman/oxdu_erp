@@ -1,0 +1,123 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+
+<main>
+
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span><a href="{% url 'web:course' %}">Course</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span>Course Details</span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+
+
+   <!-- course area start -->
+   <section class="course__area pt-30">
+      <div class="container">
+         <div class="row d-flex justify-content-center">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 ">
+               <div class="course__wrapper">
+                  <div class="page__title-content mb-25">
+                     <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+                     </div>
+                     <h5 class="breadcrumb__title-2">{{course.course_name}}</h5>
+                  </div>
+                  <div class="course__meta-2 d-flex align-items-center mb-0">
+                     
+                     <div class="course__teacher-3 d-flex align-items-center mr-30 mb-30">
+
+                        <div class="course__teacher-info-3 ">
+                           <h5>Seat</h5>
+                           <p><a href="#">{{course.seat}}</a></p>
+                        </div>
+                 
+                     </div>
+                     
+                     <div class="course__update   mr-30 mb-30">
+                        <h5>Mode</h5>
+                        <p>{{course.mode}} </p>
+                     </div>
+                      
+                     <div class="course__update mr-30 mb-30">
+                        <h5>Duration</h5>
+                        <p>{{course.duration}} </p>
+                     </div>
+                     <div class="course__rating-2 mb-30">
+                        <h5>Fees</h5>
+                        <div class="course__rating-inner d-flex align-items-center">
+                           <p>{{course.fees}}</p>
+                        </div>
+                     </div>
+                     
+                  </div>
+                  
+                  {% if course.image %}
+                  <div class="course__img w-img mb-30">
+                     <img src="{{course.image.url}}" alt="">
+                  </div>
+                  {% endif %}
+
+                  <div class="course__tab-content mb-95">
+                     <div class="tab-content" id="courseTabContent">
+                        <div class="tab-pane fade show active" id="description" role="tabpanel"
+                           aria-labelledby="description-tab">
+                           <div class="course__description">
+                              {% comment %} <p>{{course.details}}</p> {% endcomment %}
+                              <div class="course__description-list mb-45">
+                                 {{course.description|safe}}
+                              </div>
+                           </div>
+                           {% comment %} {% if course.syllabus %}
+                           <a href="{{course.syllabus.url}}" class="tp-btn">Download Course Syllabus</a>
+                           {% endif %} {% endcomment %}
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- course area end -->
+
+   <section class="contact__area pb-120">
+      <div class="container">
+         <div class="row d-flex justify-content-center">
+            <h4 class="text-center pb-45">Enter your details to download the program syllabus</h4>
+            <div class="col-xxl-7 col-xl-7 col-lg-6">
+               <form method="post" >
+                  {% csrf_token %}
+                  <div class="row">
+
+                     <div class="col-xxl-6 col-xl-6 col-md-6"><div class="contact__form-input">{{ form.name }} </div></div>
+                     <div class="col-xxl-6 col-xl-6 col-md-6"><div class="contact__form-input">{{ form.phone }} </div></div>
+                     <div class="col-xxl-6 col-xl-6 col-md-6"><div class="contact__form-input">{{ form.place }} </div></div>
+                     <div class="col-xxl-6 col-xl-6 col-md-6"><div class="contact__form-input">{{ form.branch }} </div></div>
+                     <div class="col-xxl-6 col-xl-6 col-md-6"><div class="contact__form-input"><input type="text" class="form-control"  disabled value="{{course.course_name}}"></div></div>
+
+                     <div class="align-items-center col-xxl-12">
+                        <div class="">
+                           <button type="submit" class="tp-btn mb-2">Register & Download</button>
+                        </div>
+                     </div>
+
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>
+{% endblock %}

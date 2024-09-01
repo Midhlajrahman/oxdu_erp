@@ -1,0 +1,62 @@
+{% extends 'web/base.html' %}
+{% load static i18n %}
+
+
+{% block content %}
+<main>
+
+    <!-- breadcrumb area start -->
+    <section class="pt-20 breadcrumb__area">
+       <div class="container">
+          <div class="row">
+             <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+                <span><a href="{% url 'web:index' %}">Home</a></span>
+                <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+                <span>Exams</span>
+             </div>
+          </div>
+       </div>
+    </section>
+    <!-- breadcrumb area end -->
+
+    <section class="course__area pb-50 pt-50">
+        <div class="container">
+           <div class="row">
+              <div class="col-xxl-12">
+                 <div class="section__title-wrapper text-center mb-60">
+                    <h2 class="section__title section__title-44">{% translate 'Apply for Scholarship Exams' %}</h2>
+                    <p>{% blocktrans %}Unlock your potential and pursue your dreams with our scholarship exams. Apply now and download Hallticket{% endblocktrans %}
+                    </p>
+                 </div>
+              </div>
+           </div>
+           <div class="row">
+              {% for exam in examinations %}
+              <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6">
+                  <div class="course__item white-bg transition-3 mb-30 border">
+                     <div class="course__content p-relative">
+                        <h3 class="course__title mt-2 mb-4">
+                           <a href="{{exam.get_absolute_url}}">{{exam.title}}</a>
+                        </h3>
+
+                        <div class="d-flex flex-wrap">
+                           <span class="flex_item"><i class="fa fa-calendar"></i> {{exam.date}}</span>
+                           <span class="flex_item"><i class="fa fa-clock"></i> {{exam.time|date:"h:i A"}}</span>
+                           <span class="flex_item"><i class="fa fa-hourglass-3"></i> {{exam.duration}} Minutes</span>
+                           <span class="flex_item"><i class="fa fa-language"></i> {{exam.language}}</span>
+                        </div>
+                        <div class="d-flex flex-wrap">
+                           <a href="{{exam.get_absolute_url}}" class="tp-btn-9 mt-20 btn-sm">Apply Now</a>
+                           <a href="{% url 'exams:results' %}" class="tp-btn-9 mt-20 btn-sm">View Previous Results</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+              {% endfor %}
+           </div>
+        </div>
+     </section>
+
+</main>
+
+{% endblock %}

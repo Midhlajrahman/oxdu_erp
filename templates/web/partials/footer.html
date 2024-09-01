@@ -1,0 +1,104 @@
+{% load static %}
+{% include 'web/success.html' %}
+
+ <!-- footer area start -->
+ <footer>
+    <div class="footer__area footer__black ">
+       <div class="footer__top black-bg-5 pt-70">
+          <div class="container">
+             <div class="row">
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-7">
+                   <div class="footer__widget footer-col-1 mb-50">
+                      
+                      <div class="footer__widget-content">
+                         <div class="footer__widget-info">
+                            <p>Renowned technology training institute, Provides technical and graphical courses designed to equip students with skills that go beyond academic qualifications.</p>
+                            <div class="footer__social">
+                               <h4>Get In Touch</h4>
+                                <ul>
+                                    <li><a target="_blank" href="https://api.whatsapp.com/send/?phone=+918129313838&text&type=phone_number&app_absent=0"><i class="fa-brands fa-whatsapp"></i></a></li>
+                                    <li><a target="_blank" href="tel:+918129313838"><i class="fa fa-phone"></i></a></li>
+                               </ul>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-3 col-6">
+                   <div class="footer__widget mb-50">
+                      <h3 class="footer__widget-title">Explore</h3>
+                      <div class="footer__widget-content">
+                         <ul>
+                            <li>
+                                <a href="{% url 'web:index' %}">Home</a>
+                             </li>
+                            <li>
+                               <a href="{% url 'web:about' %}">About us</a>
+                            </li>
+                            <li>
+                               <a href="{% url 'web:course' %}">Courses</a>
+                            </li>
+                            <li>
+                               <a href="{% url 'web:events' %}">Events</a>
+                            </li>
+                         </ul>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-3 col-6">
+                   <div class="footer__widget mb-50">
+                      <h3 class="footer__widget-title">Quick Links</h3>
+                      <div class="footer__widget-content">
+                         <ul>
+                            <li>
+                                <a href="{% url 'web:updates' %}">Updates</a>
+                             </li>
+                             <li>
+                              <a href="{% url 'web:branches' %}">Branches</a>
+                           </li>
+                             <li>
+                                <a href="{% url 'web:career' %}">Career</a>
+                             </li>
+                             <li>
+                                <a href="{% url 'web:contact' %}">Contact us</a>
+                             </li>
+                         </ul>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-7">
+                   <div class="footer__widget footer-col-4 mb-50">
+                      <h3 class="footer__widget-title">Newsletter</h3>
+
+                      <div class="footer__subscribe">
+                         <p>Receive newsletter with educational materials, guidance and much more!</p>
+                         <form method="post" action="{% url 'web:subscribtion' %}">
+                           {% csrf_token %}
+                            <div class="footer__subscribe-input">
+                               <input type="email" placeholder="Email" name="email">
+                               <button type="submit" class="tp-btn-subscribe">Subscribe</button>
+                            </div>
+                         </form>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="footer__bottom black-bg-5">
+          <div class="container">
+             <div class="footer__bottom-inner">
+                <div class="row">
+                   <div class="col-xxl-12">
+                      <div class="footer__copyright text-center">
+                         <p>© {% now 'Y' %} Oxdu. All Rights Reserved</p>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </footer>
+ <!-- footer area end -->
+ 

@@ -1,0 +1,61 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+
+<main>
+
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span>certifications</span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+
+   <!-- event area start -->
+   <section class="event__area pt-50 pb-80">
+      <div class="container">
+         <div class="row">
+            <div class="col-xxl-12">
+               <div class="section__title-wrapper-2 text-center mb-60">
+                  <span class="section__title-pre-2">
+                     {% translate 'Recognizing the achievements and skills gained through our comprehensive courses and training programs.' %} </span>
+                  <h3 class="section__title-2">{% translate 'Certificates of Excellence' %}</h3>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            {% for certification in certifications %}
+            <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6">
+               <div class="course__item white-bg transition-3 mb-30 border">
+                  <div class="course__thumb w-img fix">
+                     <a href="javascript:void(0)">
+                        <img src="{{certification.image.url}}" alt="">
+                     </a>
+                  </div>
+                  <div class="course__content p-relative">
+                     <h3 class="course__title mt-2">
+                        <a href="javascript:void(0)">{{certification.title}}</a>
+                     </h3>
+                     <p>{{certification.description}}</p>
+                  
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+   </section>
+   <!-- event area end -->
+
+</main>
+
+{% endblock %}

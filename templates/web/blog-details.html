@@ -1,0 +1,59 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block meta %}
+   <meta name="title" content="{{blogs.meta_title}}" />
+   <meta name="description"
+      content="{{blogs.meta_description}}" />
+{% endblock meta %}
+{% block content %}
+
+<main>
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span><a href="{% url 'web:updates' %}">Updates</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span>Update Details</span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+
+   <!-- blog area start -->
+   <section class="blog__area pt-50 pb-120">
+      <div class="container">
+         <div class="row d-flex justify-content-center">
+            <div class="col-xxl-12 col-xl-12 col-lg-12">
+               <div class="postbox__wrapper postbox__details pr-20">
+                  <div class="postbox__item transition-3 mb-70">
+                     <div class="postbox__thumb m-img">
+                        <img src="{{blogs.image.url}}" alt="" class="w-100">
+                     </div>
+                     <div class="postbox__content">
+                        <div class="postbox__meta">
+                           <span><i class="far fa-calendar-check"></i> {{blogs.date}}</span>
+                           <span><a href="#"><i class="far fa-user"></i>{{blogs.person_name}}</a></span>
+                        </div>
+                        <h3 class="postbox__title">{{blogs.title}}</h3>
+                        <div class="postbox__text mb-40">
+                           <p>{{blogs.description|safe}}</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- blog area end -->
+
+</main>
+
+<!-- footer area start -->
+{% endblock %}

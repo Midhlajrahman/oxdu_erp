@@ -1,0 +1,229 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-30 12:26+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: templates/web/about.html:45
+msgid "About Oxdu Tech School"
+msgstr ""
+
+#: templates/web/about.html:46
+msgid "Unlock a World of Knowledge"
+msgstr ""
+
+#: templates/web/about.html:49
+msgid ""
+"\n"
+"                     we believe in the power of education to transform lives "
+"and open doors to a world\n"
+"                     of possibilities. With a wide array of academic "
+"disciplines to choose from, we offer more than just\n"
+"                     degrees, we offer an enriching environment that fosters "
+"social and cultural experiences.\n"
+"                     "
+msgstr ""
+
+#: templates/web/about.html:57
+msgid "Access to all our courses"
+msgstr ""
+
+#: templates/web/about.html:58
+msgid "Learn the latest skills"
+msgstr ""
+
+#: templates/web/about.html:59
+msgid "Upskill your Knowledge"
+msgstr ""
+
+#: templates/web/about.html:79
+msgid "Top Courses"
+msgstr ""
+
+#: templates/web/about.html:80
+msgid "Our Featured Courses"
+msgstr ""
+
+#: templates/web/about.html:81
+msgid ""
+"Enhancing learning through offline courses to develop knowledge beyond the "
+"digital\n"
+"                     realm."
+msgstr ""
+
+#: templates/web/about.html:116
+msgid "Top Instructors"
+msgstr ""
+
+#: templates/web/about.html:117
+msgid "Unlocking Excellence"
+msgstr ""
+
+#: templates/web/about.html:122
+msgid ""
+"Learn from Our Selected IT Professionals with Years of Industry Experience "
+"for\n"
+"                     Comprehensive Skill Development and Industry Insights"
+msgstr ""
+
+#: templates/web/about.html:157
+msgid "Voices of Success"
+msgstr ""
+
+#: templates/web/about.html:158
+msgid "Stories of Growth and Achievement"
+msgstr ""
+
+#: templates/web/about.html:196
+msgid "Instructors those are top rated"
+msgstr ""
+
+#: templates/web/about.html:197
+msgid "Our Prestigious Partnerships"
+msgstr ""
+
+#: templates/web/about.html:199
+msgid "We collaborate with 200+ Leading universities & companies"
+msgstr ""
+
+#: templates/web/blog.html:30
+msgid "News and Updates from Our Institution’s IT Education Sphere"
+msgstr ""
+
+#: templates/web/blog.html:31
+msgid "Our Updates"
+msgstr ""
+
+#: templates/web/branches.html:27
+msgid "Our Branches"
+msgstr ""
+
+#: templates/web/branches.html:29
+msgid "Elevate Your Career with Specialized <br> Skill Growth in Your Area"
+msgstr ""
+
+#: templates/web/career.html:31
+msgid "Start Your Journey with us"
+msgstr ""
+
+#: templates/web/course-list.html:33
+msgid "Our Offline Courses"
+msgstr ""
+
+#: templates/web/event.html:31
+msgid "Our upcoming event"
+msgstr ""
+
+#: templates/web/index.html:76
+msgid "Featured Courses"
+msgstr ""
+
+#: templates/web/index.html:78
+msgid "Acquire New Skills to <br> Propel Your Career Forward"
+msgstr ""
+
+#: templates/web/index.html:291
+msgid "Enhance Your IT Journey"
+msgstr ""
+
+#: templates/web/index.html:293
+msgid "Discover Our Upcoming Free <br> Online & Offline Courses"
+msgstr ""
+
+#: templates/web/index.html:338
+msgid "Online Certification"
+msgstr ""
+
+#: templates/web/index.html:340
+msgid ""
+"\n"
+"                           You can be your own <br> Guiding star with our "
+"help!\n"
+"                           "
+msgstr ""
+
+#: templates/web/index.html:345
+msgid "They blend their knowledge and enthusiasm to communicate."
+msgstr ""
+
+#: templates/web/index.html:370
+msgid "Our Pricing"
+msgstr ""
+
+#: templates/web/index.html:371
+msgid "Simple, transparent pricing"
+msgstr ""
+
+#: templates/web/index.html:386
+msgid ""
+"Choose a plan and getunboard minutes.Then get $100 credits for your next\n"
+"                        payment"
+msgstr ""
+
+#: templates/web/index.html:464
+msgid "Learn how to get started"
+msgstr ""
+
+#: templates/web/index.html:465
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: templates/web/index.html:467
+msgid ""
+"\n"
+"                     Join our club member community now to get free updates "
+"and also a lot of freebies\n"
+"                     are waiting for you.\n"
+"                     "
+msgstr ""
+
+#: templates/web/index.html:473
+msgid "Read our full FAQ"
+msgstr ""
+
+#: templates/web/index.html:485
+msgid "Who will view my content?"
+msgstr ""
+
+#: templates/web/index.html:491 templates/web/index.html:507
+msgid ""
+"Our authors are incredible storytellers driven by their passion for\n"
+"                                    technology. They blend their knowledge "
+"and enthusiasm to communicate concepts and demonstrate\n"
+"                                    "
+msgstr ""
+
+#: templates/web/index.html:501
+msgid "How long it take to create a video course?"
+msgstr ""
+
+#: templates/web/index.html:518
+msgid "What kind of support does Courselog provide?"
+msgstr ""
+
+#: templates/web/index.html:524 templates/web/index.html:541
+msgid ""
+"\n"
+"                                    Our authors are incredible storytellers "
+"driven by their passion for\n"
+"                                    technology. They blend their knowledge "
+"and enthusiasm to communicate concepts and demonstrate\n"
+"                                    "
+msgstr ""
+
+#: templates/web/index.html:535
+msgid "How to Change my Password easily?"
+msgstr ""

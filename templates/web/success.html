@@ -1,0 +1,30 @@
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <script>
+        swal({
+            title: "Registered!",
+            text: "Thank you for your Registration!",
+            icon: "success",
+            buttons: {
+                confirm: {
+                    text: "Back to Home",
+                    value: true,
+                    visible: true,
+                    className: "btn-primary m-auto",
+                },
+            },
+        }).then(function () {
+            window.location.href = "/";
+        });
+    </script>
+
+    <style>
+        .swal-footer{
+            text-align: center;
+        }
+    </style>
+      
+    {% endfor %}
+</ul>
+{% endif %}

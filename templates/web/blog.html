@@ -1,0 +1,70 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<main>
+
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span> Updates</span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+
+
+   <!-- blog area start -->
+   <section class="blog__area pt-50 pb-120">
+      <div class="container">
+         <div class="row">
+            <div class="col-xxl-12">
+               <div class="section__title-wrapper-2 text-center mb-60">
+                  <span class="section__title-pre-2">
+                     {% translate 'News and Updates from Our Institution’s IT Education Sphere' %}</span>
+                  <h3 class="section__title-2">{% translate 'Our Updates' %}</h3>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            {% for blog in blogs %}
+            <div class="col-xxl-4 col-xl-4 col-lg-4">
+               <div class="postbox__wrapper pr-20">
+                  <article class="postbox__item format-image mb-50 transition-3">
+                     <div class="postbox__thumb w-img">
+                        <a href="{{blog.get_absolute_url}}">
+                           <img src="{{blog.image.url}}" alt="">
+                        </a>
+                     </div>
+                     <div class="postbox__content">
+                        <div class="postbox__meta">
+                           <span><i class="far fa-calendar-check"></i>{{blog.date}}</span>
+                        </div>
+                        <h3 class="postbox__title">
+                           <a href="{{blog.get_absolute_url}}">{{blog.title|safe|truncatechars:40}}</a>
+                        </h3>
+                        {% comment %} <div class="postbox__text">
+                           <p>{{blog.description}}</p>
+                        </div> {% endcomment %}
+                        <div class="postbox__read-more">
+                           <a href="{{blog.get_absolute_url}}" class="tp-btn">read more</a>
+                        </div>
+                     </div>
+                  </article>
+               </div>
+            </div>
+            {% endfor %}
+
+         </div>
+      </div>
+   </section>
+   <!-- blog area end -->
+
+</main>
+{% endblock %}

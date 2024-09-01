@@ -1,0 +1,80 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+
+<main>
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span><a href="{% url 'web:career' %}">Career</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span>Career Details</span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+   <section class="contact__area pt-50 pb-120 ">
+      <div class="container">
+         <h1 class="text-center pb-45">Application Form</h1>
+         <div class="row d-flex justify-content-center">
+            <div class="col-xxl-7 col-xl-7 col-lg-6">
+               <h5>{{careers.description |safe}}</h5>
+               <h5>Date:{{careers.date}}</h5>
+               <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="row">
+                     <div class="col-xxl-6 col-xl-6 col-md-6">
+                        <div class="contact__form-input">
+                           {{ form.position }} </div>
+                     </div>
+                     <div class="col-xxl-6 col-xl-6 col-md-6">
+                        <div class="contact__form-input">
+                           {{ form.name }} </div>
+                     </div>
+
+                     <div class="col-xxl-6 col-xl-6 col-md-6">
+                        <div class="contact__form-input">
+                           {{ form.email }} </div>
+                     </div>
+                     <div class="col-xxl-6 col-xl-6 col-md-6">
+                        <div class="contact__form-input">
+                           {{ form.phone }} </div>
+                     </div>
+
+                     <div class="col-xxl-12">
+                        <div class="contact__form-input">
+                           {{ form.resume }} </div>
+                     </div>
+                     <div class="col-xxl-12">
+                        <div class="">
+                           <button type="submit" class="tp-btn">Apply Now</button>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      </div>
+   </section>
+
+</main>
+{% if messages %}
+<ul class="messages">
+   {% for message in messages %}
+   <script>
+      swal("Your Appointment Saved!", "Our team will contact you soon", "success");     
+   </script>
+   {% endfor %}
+</ul>
+
+{% endif %}
+
+{% endblock %}

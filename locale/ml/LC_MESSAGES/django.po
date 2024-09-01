@@ -1,0 +1,282 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-30 12:26+0530\n"
+"PO-Revision-Date: 2024-06-24 13:57+0530\n"
+"Last-Translator:   <>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
+#: templates/web/about.html:45
+msgid "About Oxdu Tech School"
+msgstr "ഓക്‌സ്‌ഡു ടെക് സ്‌കൂളിനെക്കുറിച്ച്"
+
+#: templates/web/about.html:46
+msgid "Unlock a World of Knowledge"
+msgstr "അറിവിന്റെ ഒരു ലോകം അൺലോക്ക് ചെയ്യുക"
+
+#: templates/web/about.html:49
+#| msgid ""
+#| "we believe in the power of education to transform lives and open doors to a "
+#| "world of possibilities. With a wide array of academic disciplines to choose "
+#| "from, we offer more than just degrees, we offer an enriching environment "
+#| "that fosters social and cultural experiences."
+msgid ""
+"\n"
+"                     we believe in the power of education to transform lives and open doors to a world\n"
+"                     of possibilities. With a wide array of academic disciplines to choose from, we offer more than just\n"
+"                     degrees, we offer an enriching environment that fosters social and cultural experiences.\n"
+"                     "
+msgstr ""
+"\n"
+"ജീവിതത്തെ പരിവർത്തനം ചെയ്യാനും സാധ്യതകളുടെ ലോകത്തിലേക്കുള്ള വാതിലുകൾ തുറക്കാനുമുള്ള വിദ്യാഭ്യാസത്തിന്റെ ശക്തിയിൽ ഞങ്ങൾ വിശ്വസിക്കുന്നു. തിരഞ്ഞെടുക്കാനുള്ള വിപുലമായ അക്കാദമിക് വിഷയങ്ങൾക്കൊപ്പം, ഞങ്ങൾ വെറും ഡിഗ്രികൾ മാത്രമല്ല, സാമൂഹികവും സാംസ്കാരികവുമായ അനുഭവങ്ങൾ വളർത്തുന്ന സമ്പന്നമായ അന്തരീക്ഷം ഞങ്ങൾ വാഗ്ദാനം ചെയ്യുന്നു."
+
+#: templates/web/about.html:57
+msgid "Access to all our courses"
+msgstr "ഞങ്ങളുടെ എല്ലാ കോഴ്സുകളിലേക്കും പ്രവേശനം"
+
+#: templates/web/about.html:58
+msgid "Learn the latest skills"
+msgstr "ഏറ്റവും പുതിയ കഴിവുകൾ പഠിക്കുക"
+
+#: templates/web/about.html:59
+msgid "Upskill your Knowledge"
+msgstr "നിങ്ങളുടെ അറിവ് വർദ്ധിപ്പിക്കുക"
+
+#: templates/web/about.html:79
+msgid "Top Courses"
+msgstr "മികച്ച കോഴ്സുകൾ"
+
+#: templates/web/about.html:80
+msgid "Our Featured Courses"
+msgstr "ഞങ്ങളുടെ തിരഞ്ഞെടുത്ത കോഴ്സുകൾ"
+
+#: templates/web/about.html:81
+#| msgid ""
+#| "Enhancing learning through offline courses to develop knowledge beyond the "
+#| "digital realm."
+msgid ""
+"Enhancing learning through offline courses to develop knowledge beyond the digital\n"
+"                     realm."
+msgstr ""
+"ഡിജിറ്റൽ മേഖലയ്‌ക്കപ്പുറം അറിവ് വികസിപ്പിക്കുന്നതിന് ഓഫ്‌ലൈൻ കോഴ്‌സുകളിലൂടെ "
+"പഠനം മെച്ചപ്പെടുത്തുന്നു."
+
+#: templates/web/about.html:116
+msgid "Top Instructors"
+msgstr "മികച്ച അധ്യാപകർ"
+
+#: templates/web/about.html:117
+msgid "Unlocking Excellence"
+msgstr "അൺലോക്ക് എക്സലൻസ്"
+
+#: templates/web/about.html:122
+#| msgid ""
+#| "Learn from Our Selected IT Professionals with Years of Industry Experience "
+#| "for Comprehensive Skill Development and Industry Insights"
+msgid ""
+"Learn from Our Selected IT Professionals with Years of Industry Experience for\n"
+"                     Comprehensive Skill Development and Industry Insights"
+msgstr ""
+"സമഗ്രമായ നൈപുണ്യ വികസനത്തിനും വ്യവസായ സ്ഥിതിവിവരക്കണക്കുകൾക്കുമായി "
+"വർഷങ്ങളുടെ വ്യവസായ പരിചയമുള്ള ഞങ്ങളുടെ തിരഞ്ഞെടുത്ത ഐടി പ്രൊഫഷണലുകളിൽ നിന്ന്"
+" പഠിക്കുക"
+
+#: templates/web/about.html:157
+msgid "Voices of Success"
+msgstr "വിജയത്തിന്റെ ശബ്ദങ്ങൾ"
+
+#: templates/web/about.html:158
+msgid "Stories of Growth and Achievement"
+msgstr "വളർച്ചയുടെയും നേട്ടത്തിന്റെയും കഥകൾ"
+
+#: templates/web/about.html:196
+msgid "Instructors those are top rated"
+msgstr "മികച്ച റേറ്റിംഗ് ഉള്ള ഇൻസ്ട്രക്ടർമാർ"
+
+#: templates/web/about.html:197
+msgid "Our Prestigious Partnerships"
+msgstr "ഞങ്ങളുടെ അഭിമാനകരമായ പങ്കാളിത്തം"
+
+#: templates/web/about.html:199
+msgid "We collaborate with 200+ Leading universities & companies"
+msgstr "200+ പ്രമുഖ സർവകലാശാലകളുമായും കമ്പനികളുമായും ഞങ്ങൾ സഹകരിക്കുന്നു"
+
+#: templates/web/blog.html:30
+msgid "News and Updates from Our Institution’s IT Education Sphere"
+msgstr ""
+"ഞങ്ങളുടെ സ്ഥാപനത്തിന്റെ ഐടി വിദ്യാഭ്യാസ മേഖലയിൽ നിന്നുള്ള വാർത്തകളും "
+"അപ്‌ഡേറ്റുകളും"
+
+#: templates/web/blog.html:31
+msgid "Our Updates"
+msgstr "ഞങ്ങളുടെ അപ്ഡേറ്റുകൾ"
+
+#: templates/web/branches.html:27
+msgid "Our Branches"
+msgstr "ഞങ്ങളുടെ ശാഖകൾ"
+
+#: templates/web/branches.html:29
+msgid "Elevate Your Career with Specialized <br> Skill Growth in Your Area"
+msgstr ""
+"നിങ്ങളുടെ മേഖലയിലെ സ്പെഷ്യലൈസ്ഡ് <br> നൈപുണ്യ വളർച്ചയോടെ നിങ്ങളുടെ കരിയർ "
+"ഉയർത്തുക"
+
+#: templates/web/career.html:31
+msgid "Start Your Journey with us"
+msgstr "ഞങ്ങളോടൊപ്പം നിങ്ങളുടെ യാത്ര ആരംഭിക്കുക"
+
+#: templates/web/course-list.html:33
+msgid "Our Offline Courses"
+msgstr "ഞങ്ങളുടെ ഓഫ്‌ലൈൻ കോഴ്സുകൾ"
+
+#: templates/web/event.html:31
+msgid "Our upcoming event"
+msgstr "ഞങ്ങളുടെ വരാനിരിക്കുന്ന ഇവന്റ്"
+
+#: templates/web/index.html:76
+msgid "Featured Courses"
+msgstr "തിരഞ്ഞെടുത്ത കോഴ്സുകൾ"
+
+#: templates/web/index.html:78
+msgid "Acquire New Skills to <br> Propel Your Career Forward"
+msgstr "നിങ്ങളുടെ കരിയർ മുന്നോട്ട് കൊണ്ടുപോകാൻ <br>പുതിയ കഴിവുകൾ നേടുക"
+
+#: templates/web/index.html:291
+msgid "Enhance Your IT Journey"
+msgstr "നിങ്ങളുടെ ഐടി യാത്ര മെച്ചപ്പെടുത്തുക"
+
+#: templates/web/index.html:293
+msgid "Discover Our Upcoming Free <br> Online & Offline Courses"
+msgstr ""
+"ഞങ്ങളുടെ വരാനിരിക്കുന്ന സൗജന്യ <br> ഓൺലൈൻ & ഓഫ്‌ലൈൻ കോഴ്സുകൾ കണ്ടെത്തുക"
+
+#: templates/web/index.html:338
+msgid "Online Certification"
+msgstr "ഓൺലൈൻ സർട്ടിഫിക്കേഷൻ"
+
+#: templates/web/index.html:340
+#| msgid ""
+#| "You can be your own <br> Guiding star with our\n"
+#| "                           help!"
+msgid ""
+"\n"
+"                           You can be your own <br> Guiding star with our help!\n"
+"                           "
+msgstr ""
+"\n"
+"ഞങ്ങളുടെ കൂടെ നിങ്ങൾക്ക് നിങ്ങളുടെ <br>സ്വന്തം വഴികാട്ടിയാകാം\n"
+"സഹായം!"
+
+#: templates/web/index.html:345
+msgid "They blend their knowledge and enthusiasm to communicate."
+msgstr "ആശയവിനിമയത്തിനുള്ള അറിവും ഉത്സാഹവും അവർ സമന്വയിപ്പിക്കുന്നു."
+
+#: templates/web/index.html:370
+msgid "Our Pricing"
+msgstr "ഞങ്ങളുടെ വിലനിർണ്ണയം"
+
+#: templates/web/index.html:371
+msgid "Simple, transparent pricing"
+msgstr "ലളിതവും സുതാര്യവുമായ വിലനിർണ്ണയം"
+
+#: templates/web/index.html:386
+#| msgid ""
+#| "Choose a plan and getunboard minutes.Then get $100 credits for your next "
+#| "payment"
+msgid ""
+"Choose a plan and getunboard minutes.Then get $100 credits for your next\n"
+"                        payment"
+msgstr ""
+"ഒരു പ്ലാനും ഗെറ്റൺബോർഡ് മിനിറ്റുകളും തിരഞ്ഞെടുക്കുക. തുടർന്ന് നിങ്ങളുടെ "
+"അടുത്ത പേയ്‌മെന്റിന് $100 ക്രെഡിറ്റുകൾ നേടുക"
+
+#: templates/web/index.html:464
+msgid "Learn how to get started"
+msgstr "എങ്ങനെ തുടങ്ങാമെന്ന് അറിയുക"
+
+#: templates/web/index.html:465
+msgid "Frequently Asked Questions"
+msgstr "പതിവായി ചോദിക്കുന്ന ചോദ്യങ്ങൾ"
+
+#: templates/web/index.html:467
+#| msgid ""
+#| "Join our club member community now to get free updates and also a lot of freebies are waiting for\n"
+#| "                     you or "
+msgid ""
+"\n"
+"                     Join our club member community now to get free updates and also a lot of freebies\n"
+"                     are waiting for you.\n"
+"                     "
+msgstr ""
+"\n"
+"സൗജന്യ അപ്‌ഡേറ്റുകൾ ലഭിക്കുന്നതിന് ഞങ്ങളുടെ ക്ലബ് അംഗ കമ്മ്യൂണിറ്റിയിൽ ചേരൂ, കൂടാതെ ധാരാളം സൗജന്യങ്ങൾ കാത്തിരിക്കുന്നു\n"
+"നിങ്ങൾ അല്ലെങ്കിൽ"
+
+#: templates/web/index.html:473
+msgid "Read our full FAQ"
+msgstr "ഞങ്ങളുടെ മുഴുവൻ പതിവുചോദ്യങ്ങളും വായിക്കുക"
+
+#: templates/web/index.html:485
+msgid "Who will view my content?"
+msgstr "എന്റെ ഉള്ളടക്കം ആര് കാണും?"
+
+#: templates/web/index.html:491 templates/web/index.html:507
+#| msgid ""
+#| "Our authors are incredible storytellers driven by their passion for technology. They\n"
+#| "                                    blend their knowledge and enthusiasm to communicate concepts and demonstrate"
+msgid ""
+"Our authors are incredible storytellers driven by their passion for\n"
+"                                    technology. They blend their knowledge and enthusiasm to communicate concepts and demonstrate\n"
+"                                    "
+msgstr ""
+"സാങ്കേതികവിദ്യയോടുള്ള അഭിനിവേശത്താൽ നയിക്കപ്പെടുന്ന അവിശ്വസനീയമായ കഥാകാരന്മാരാണ് ഞങ്ങളുടെ രചയിതാക്കൾ. അവർ\n"
+"ആശയങ്ങൾ ആശയവിനിമയം നടത്താനും പ്രകടിപ്പിക്കാനും അവരുടെ അറിവും ഉത്സാഹവും സമന്വയിപ്പിക്കുക"
+
+#: templates/web/index.html:501
+msgid "How long it take to create a video course?"
+msgstr "ഒരു വീഡിയോ കോഴ്‌സ് സൃഷ്‌ടിക്കാൻ എത്ര സമയമെടുക്കും?"
+
+#: templates/web/index.html:518
+msgid "What kind of support does Courselog provide?"
+msgstr "Courselog എന്ത് തരത്തിലുള്ള പിന്തുണയാണ് നൽകുന്നത്?"
+
+#: templates/web/index.html:524 templates/web/index.html:541
+#| msgid ""
+#| "Our authors are incredible storytellers driven by their passion for technology. They\n"
+#| "                                    blend their knowledge and enthusiasm to communicate concepts and demonstrate"
+msgid ""
+"\n"
+"                                    Our authors are incredible storytellers driven by their passion for\n"
+"                                    technology. They blend their knowledge and enthusiasm to communicate concepts and demonstrate\n"
+"                                    "
+msgstr ""
+"\n"
+"സാങ്കേതികവിദ്യയോടുള്ള അഭിനിവേശത്താൽ നയിക്കപ്പെടുന്ന അവിശ്വസനീയമായ കഥാകാരന്മാരാണ് ഞങ്ങളുടെ രചയിതാക്കൾ. അവർ\n"
+"ആശയങ്ങൾ ആശയവിനിമയം നടത്താനും പ്രകടിപ്പിക്കാനും അവരുടെ അറിവും ഉത്സാഹവും സമന്വയിപ്പിക്കുക"
+
+#: templates/web/index.html:535
+msgid "How to Change my Password easily?"
+msgstr "എന്റെ പാസ്‌വേഡ് എങ്ങനെ എളുപ്പത്തിൽ മാറ്റാം?"
+
+#~ msgid "Explore the Exciting Path of an IT Educator"
+#~ msgstr "ഒരു ഐടി അധ്യാപകന്റെ ആവേശകരമായ പാത പര്യവേക്ഷണം ചെയ്യുക"
+
+#~ msgid ""
+#~ "Discover Our Upcoming Free Online & Offline IT Courses to Boost Your "
+#~ "Skillset"
+#~ msgstr ""
+#~ "നിങ്ങളുടെ വൈദഗ്ധ്യം വർദ്ധിപ്പിക്കുന്നതിന് ഞങ്ങളുടെ വരാനിരിക്കുന്ന സൗജന്യ "
+#~ "ഓൺലൈൻ & ഓഫ്‌ലൈൻ ഐടി കോഴ്സുകൾ കണ്ടെത്തുക"
