@@ -24,13 +24,6 @@ from .models import (
 
 
 def index(request):
-    query = request.GET.get("q")
-    if query:
-        matching_courses = Course.objects.filter(course_name__icontains=query)
-        if matching_courses.exists():
-            matched_course = matching_courses.first()
-            return redirect(matched_course.get_absolute_url())
-
     banner = Banner.objects.all()[:1]
     courses = Course.objects.all()
     testimonials = Testimonial.objects.all()
@@ -62,7 +55,6 @@ def about(request):
 
 
 def events(request):
-    # activate('ml')
     events = Event.objects.all()
     context = {"is_events": True, "events": events}
     return render(request, "web/events.html", context)
@@ -97,7 +89,6 @@ def course_detail(request, slug):
             messages.success(request, "Success! Message sent successfully.")
 
             if course.syllabus:
-                # Assuming you want to open the PDF in the browser
                 with open(course.syllabus.path, "rb") as pdf_file:
                     response = HttpResponse(
                         pdf_file.read(), content_type="application/pdf"
@@ -130,7 +121,6 @@ def branch_course_detail(request, slug):
             messages.success(request, "Success! Message sent successfully.")
 
             if course.syllabus:
-                # Assuming you want to open the PDF in the browser
                 with open(course.syllabus.path, "rb") as pdf_file:
                     response = HttpResponse(
                         pdf_file.read(), content_type="application/pdf"
@@ -190,8 +180,10 @@ def updates(request):
 
 
 def update_detail(request, slug):
-    blogs = Blog.objects.get(slug=slug)
-    context = {"blogs": blogs}
+    blog = Blog.objects.get(slug=slug)
+    prev_blog = Blog.objects.filter(id__lt=blog.id).order_by("-id").first()
+    next_blog = Blog.objects.filter(id__gt=blog.id).order_by("id").first()
+    context = {"blog": blog, "prev_blog": prev_blog, "next_blog": next_blog}
     return render(request, "web/blog-details.html", context)
 
 

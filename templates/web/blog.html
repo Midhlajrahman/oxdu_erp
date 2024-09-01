@@ -26,16 +26,16 @@
          <div class="row">
             <div class="col-xxl-12">
                <div class="section__title-wrapper-2 text-center mb-60">
+                  <h3 class="section__title-2">{% translate 'News & Updates' %}</h3>
                   <span class="section__title-pre-2">
                      {% translate 'News and Updates from Our Institution’s IT Education Sphere' %}</span>
-                  <h3 class="section__title-2">{% translate 'Our Updates' %}</h3>
                </div>
             </div>
          </div>
          <div class="row">
             {% for blog in blogs %}
             <div class="col-xxl-4 col-xl-4 col-lg-4">
-               <div class="postbox__wrapper pr-20">
+               <div class="postbox__wrapper">
                   <article class="postbox__item format-image mb-50 transition-3">
                      <div class="postbox__thumb w-img">
                         <a href="{{blog.get_absolute_url}}">

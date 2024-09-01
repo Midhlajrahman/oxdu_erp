@@ -302,6 +302,9 @@ input[type=color] {
 .w-img img {
   width: 100%;
   border-radius: 14px;
+  height: 180px;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .m-img img {
@@ -6228,25 +6231,25 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .postbox__title {
-    font-size: 28px;
+    font-size: 16px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .postbox__title {
-    font-size: 33px;
+    font-size: 16px;
   }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .postbox__title {
-    font-size: 30px;
+    font-size: 15px;
   }
 }
 
 @media (max-width: 575px) {
   .postbox__title {
-    font-size: 25px;
+    font-size: 15px;
   }
 }
 

@@ -1,13 +1,12 @@
 {% extends 'web/base.html' %}
-{% load static %}
-{% load i18n %}
-{% block meta %}
-   <meta name="title" content="{{blogs.meta_title}}" />
-   <meta name="description"
-      content="{{blogs.meta_description}}" />
-{% endblock meta %}
-{% block content %}
+{% load static i18n %}
 
+{% block meta %}
+   <meta name="title" content="{{blog.meta_title}}" />
+   <meta name="description" content="{{blog.meta_description}}" />
+{% endblock meta %}
+
+{% block content %}
 <main>
    <!-- breadcrumb area start -->
    <section class="pt-20 breadcrumb__area">
@@ -17,8 +16,6 @@
                <span><a href="{% url 'web:index' %}">Home</a></span>
                <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
                <span><a href="{% url 'web:updates' %}">Updates</a></span>
-               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
-               <span>Update Details</span>
             </div>
          </div>
       </div>
@@ -31,23 +28,48 @@
          <div class="row d-flex justify-content-center">
             <div class="col-xxl-12 col-xl-12 col-lg-12">
                <div class="postbox__wrapper postbox__details pr-20">
-                  <div class="postbox__item transition-3 mb-70">
+                  <div class="postbox__item transition-3 mb-20">
                      <div class="postbox__thumb m-img">
-                        <img src="{{blogs.image.url}}" alt="" class="w-100">
+                        <img src="{{blog.image.url}}" alt="" class="w-100" style="max-height:500px;object-fit:cover;border-radius: 20px 20px 0 0;">
                      </div>
                      <div class="postbox__content">
                         <div class="postbox__meta">
-                           <span><i class="far fa-calendar-check"></i> {{blogs.date}}</span>
-                           <span><a href="#"><i class="far fa-user"></i>{{blogs.person_name}}</a></span>
+                           <span><i class="far fa-calendar-check"></i> {{blog.date}}</span>
+                           <span><a href="#"><i class="far fa-user"></i>{{blog.person_name}}</a></span>
                         </div>
-                        <h3 class="postbox__title">{{blogs.title}}</h3>
+                        <h3 class="postbox__title">{{blog.title}}</h3>
                         <div class="postbox__text mb-40">
-                           <p>{{blogs.description|safe}}</p>
+                           <p>{{blog.description|safe}}</p>
                         </div>
+
+                        <div class="row justify-content-between mt-80">
+                           <div class="col-md-6">
+                             <div class="pag_prev">
+                               {% if prev_blog %}
+                               <a href="{{prev_blog.get_absolute_url}}">
+                                 <h5><span class="fas fa-chevron-left pe-2"></span> Previous Post</h5>
+                                 <p class="fz14 text mb-0">{{prev_blog.title}}</p>
+                               </a>
+                               {% endif %}
+                             </div>
+                           </div>
+                           <div class="col-md-6">
+                             <div class="pag_next">
+                               {% if next_blog %}
+                               <a href="{{next_blog.get_absolute_url}}" class="text-end">
+                                 <h5>Next Post<span class="fas fa-chevron-right ps-2"></span></h5>
+                                 <p class="fz14 text mb-0">{{next_blog.title}}</p>
+                               </a>
+                               {% endif %}
+                             </div>
+                           </div>
+                         </div>
+
                      </div>
                   </div>
                </div>
             </div>
+           
          </div>
       </div>
    </section>
