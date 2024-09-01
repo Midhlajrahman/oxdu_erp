@@ -294,8 +294,10 @@ class Certification(models.Model):
     title = models.CharField(max_length=128)
     description = models.TextField()
     image = models.FileField(upload_to="certificates/image")
+    order = models.PositiveIntegerField(default=0)
 
     class Meta:
+        ordering = ("order",)
         verbose_name = "Certification"
         verbose_name_plural = "Certifications"
 
