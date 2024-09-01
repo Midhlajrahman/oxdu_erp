@@ -66,6 +66,7 @@ class Career(models.Model):
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     branch = models.CharField(max_length=100)
     date = models.DateField(auto_now=False, auto_now_add=False)
+    summary = models.TextField()
     description = HTMLField(null=True, blank=True)
 
     def get_absolute_url(self):
