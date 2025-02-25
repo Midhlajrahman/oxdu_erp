@@ -8,12 +8,12 @@
 {% endblock meta %}
 
 {% block content %}
-
+<link rel="stylesheet" href="{% static 'web/css/branch.css' %}">
 
 <main>
    <!-- breadcrumb area start -->
-   <section class="pt-20 breadcrumb__area">
-      <div class="container">
+   <section class=" breadcrumb__area bread">
+      {% comment %} <div class="container">
          <div class="row">
             <div class="breadcrumb__list breadcrumb__list-2 mb-10">
                <span><a href="{% url 'web:index' %}">Home</a></span>
@@ -23,11 +23,11 @@
                <span>Branch Details</span>
             </div>
          </div>
-      </div>
+      </div> {% endcomment %}
    </section>
    <!-- breadcrumb area end -->
    <!-- event area start -->
-   <section class="event__area pt-30 p-relative">
+  {% comment %} <section class="event__area pt-30 p-relative">
       <div class="container">
          <div class="row d-flex justify-content-center">
             <div class="col-xxl-12 col-xl-12 col-lg-12">
@@ -51,18 +51,34 @@
             </div>
          </div>
       </div>
-   </section>
+   </section> {% endcomment %}
+   <div class="slider-container">
+      <div class="main-slider">
+         {% for image in branch_images %}
+         <div class="slide {% if forloop.first %}active{% endif %}">
+             <img src="{{ image.image.url }}" alt="Branch Image">
+         </div>
+     {% endfor %}
+         
+          <button class="nav-button prev-button">❮</button>
+          <button class="nav-button next-button">❯</button>
+      </div>
+  </div>
+
+
+  
    <!-- event area end -->
 
    <!-- event details area start -->
-   <section class="event__area pb-45">
+   <section class="event__area ">
       <div class="container">
          <div class="row d-flex justify-content-center">
             <div class="col-xxl-12 col-xl-12 col-lg-12">
                <div class="event_wrapper">
-                  <div class="event__thumb mb-35 w-img">
-                     <img src="{{branch.image.url}}" alt="">
+                  <div class="page__title-content">
+                     <h5 class="mt-3">{{branch.branch_name}}</h5>
                   </div>
+                
                   <div class="event__details mb-35">
                      <p>{{branch.description|default:""|safe}}</p>
                   </div>
@@ -70,22 +86,37 @@
                      <p>{{branch.about_branch|default:""|safe}}</p>
                   </div>
 
-                  {% if branch.get_courses %}
-                  <h4 class="text-green">Available Courses</h4>
-                  <div class="event__details mb-35 mt-20">
+                  {% if branch.get_courses.all %}
+                  <div class="section__title-wrapper-2  text-center">
+                  
+                     <h3 class="section__title section__title-44">{% translate 'Courses' %}</h3>
+                  </div>
+                  <div class="event__details  mt-20">
                      <div class="row">
-                        {% for course in branch.get_courses %}
-                        <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6">
-                           <a href="{{course.get_absolute_url}}">
-                              <div class="category__item-3 fix transition-3 white-bg mb-30">
-                                 <h4 class="category__title-3">{{course.course_name}}</h4>
+                        {% for course in branch.get_courses.all %}
+                        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6">
+                           <div class="course__item-2 white-bg transition-3 white-bg mb-30 fix">
+                              <div class="course__thumb-2 w-img fix">
+                                 <a href="#">
+                                    <img src="{{course.image.url}}" alt="">
+                                 </a>
                               </div>
-                           </a>
+                              <div class="course__content-2">
+                                 <h3 class="course__title mt-2 course_detail_page">
+                                    <a href="#">{{course.course_name}}</a>
+                                 </h3>
+                                 <p class="mb-2">
+                                 {{course.description|safe}}
+                              </p>
+                                 <a href="{{course.course.get_absolute_url}}" class="tp-btn-9 w-50 ">Read More</a>
+                              </div>
+                           </div>
                         </div>
+
                         {% endfor %}
                      </div>
                   </div>
-                  {% endif %}
+               {% endif %}
 
                </div>
             </div>
@@ -95,43 +126,125 @@
  
    {% if testimonials %}
    <!-- testimonial area start -->
-   <section class="testimonial__area pb-65 fix">
-      <div class="container">
-         <div class="row">
-            <div class="col-xxl-12">
-               <div class="section__title-wrapper-2 mb-40 text-center">
-                  <span class="section__title-pre">{% translate 'Voices of Success' %}</span>
-                  <h3 class="section__title section__title-44">{% translate 'Stories of Growth and Achievement' %}</h3>
-               </div>
+   <section class="testimonial-section">
+      <div class="section__title-wrapper-2 text-center">
+        
+         <h3 class="section__title section__title-44">{% translate 'Stories of Growth and Achievement' %}</h3>
+      </div>
+      <div class="swiper testimonial-swiper">
+          <div class="swiper-wrapper">
+              <!-- Testimonial 1 -->
+              {% for testimonial in testimonials %}
+             
+              <div class="swiper-slide">
+                  <div class="testimonial-card">
+                      <div class="testimonial-image">
+                          <img src="{{testimonial.photo.url}}" alt="#">
+                      </div>
+                      <p class="testimonial-text">{{testimonial.review}}</p>
+                      <h3 class="testimonial-name">{{testimonial.person_name}}</h3>
+                      <p class="testimonial-position">{{testimonial.designation}}</p>
+                  </div>
+              </div>
+
+              {% endfor %}
+
+          </div>
+          
+          <!-- Navigation buttons -->
+ 
+          
+          <!-- Pagination -->
+          {% comment %} <div class="swiper-pagination"></div> {% endcomment %}
+      </div>
+  </section>
+   <!-- testimonial area end -->
+   {% endif %}
+
+
+
+  <section class="blog__area">
+   <div class="container">
+      <div class="row">
+         <div class="col-xxl-12">
+            <div class="section__title-wrapper-2 text-center ">
+               <h3 class="section__title-2">{% translate 'Our Story' %}</h3>
+              
             </div>
          </div>
+      </div>
+      <div class="row">
+         {% for story in stories %}
+         <div class="col-xxl-4 col-xl-4 col-lg-4">
+            <div class="postbox__wrapper">
+               <article class="postbox__item format-image mb-50 transition-3">
+                  <div class="postbox__thumb w-img">
+                     <a href="#">
+                        <img src="{{story.image.url}}" alt="">
+                     </a>
+                  </div>
+                  <div class="postbox__content">
+                    
+                     <h3 class="postbox__title">
+                        <a href="#">{{story.title|safe}}</a>
+                     </h3>
+                   
+                    
+                  </div>
+               </article>
+            </div>
+         </div>
+         {% endfor %}
+
+      </div>
+   </div>
+</section>
+
+
+   <section class="faq__area pt-20 pb-70">
+      <div class="container">
          <div class="row">
-            <div class="col-xxl-12">
-               <div class="testimonial__slider">
-                  <div class="testimonial__active row">
-                     {% for testimonial in testimonials %}
-                     <div class="testimonial__item transition-3 text-center white-bg col-md-4 m-3 border">
-                        <div class="testimonial__avater">
-                           <img src="{{testimonial.photo.url}}" alt="">
+            <div class="col-xxl-5 col-xl-5 col-lg-5">
+               <div class="faq__wrapper pr-25">
+                  <div class="section__title-wrapper mb-5">
+                     <span class="section__title-pre-3">{% translate 'Learn how to get started' %}</span>
+                     <h2 class="section__title section__title-44">{% translate 'Frequently Asked Questions' %}</h2>
+                  </div>
+                  <p>{% blocktrans %}
+                     Our FAQs aim to streamline the user experience, offering clarity and efficiency by addressing common concerns upfront.
+                     Whether you're a customer seeking product details, a user navigating a website, or a member of our community looking for
+                     guidance, our Frequently Asked Questions section is your go-to source for concise, informative responses, simplifying
+                     your journey and enhancing your understanding.
+                     {% endblocktrans %}</p>
+               </div>
+            </div>
+            <div class="col-xxl-7 col-xl-7 col-lg-7">
+               <div class="faq__item-wrapper pl-100">
+                  <div class="faq__accordion">
+                     <div class="accordion" id="faqaccordion">
+                        {% for faq in faqs %}
+                        <div class="accordion-item">
+                           <h2 class="accordion-header" id="faq{{faq.id}}">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                 data-bs-target="#collapse{{faq.id}}" aria-expanded="false" aria-controls="collapse{{faq.id}}">
+                                 {{faq.question}}
+                              </button>
+                           </h2>
+                           <div id="collapse{{faq.id}}" class="accordion-collapse collapse" aria-labelledby="faq{{faq.id}}"
+                              data-bs-parent="#faqaccordion">
+                              <div class="accordion-body">
+                                 <p>{{faq.answer}}</p>
+                              </div>
+                           </div>
                         </div>
-                        <div class="testimonial__text">
-                           <p>{{testimonial.review}}
-                           </p>
-                        </div>
-                        <div class="testimonial__avater-info mb-5">
-                           <h3>{{testimonial.person_name}}</h3>
-                           <span>{{testimonial.designation}}</span>
-                        </div>
+                        {% endfor %}
                      </div>
-                     {% endfor %}
                   </div>
                </div>
             </div>
          </div>
       </div>
    </section>
-   <!-- testimonial area end -->
-   {% endif %}
 
       <!-- contact area start -->
       <section class="contact__area pt-50 pb-120">
@@ -234,5 +347,151 @@
       <!-- contact area end -->
 
 </main>
+
+<script>
+   const slides = document.querySelectorAll('.slide');
+   const prevButton = document.querySelector('.prev-button');
+   const nextButton = document.querySelector('.next-button');
+   let currentSlide = 0;
+
+   function goToSlide(index) {
+       slides[currentSlide].classList.remove('active');
+       currentSlide = index;
+       slides[currentSlide].classList.add('active');
+   }
+
+   function nextSlide() {
+       const nextIndex = (currentSlide + 1) % slides.length;
+       goToSlide(nextIndex);
+   }
+
+   function prevSlide() {
+       const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+       goToSlide(prevIndex);
+   }
+
+   prevButton.addEventListener('click', prevSlide);
+   nextButton.addEventListener('click', nextSlide);
+
+   setInterval(nextSlide, 5000);
+</script>
+
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+       const track = document.querySelector('.testimonial-track');
+       const slides = document.querySelectorAll('.testimonial-slide');
+       const dotsContainer = document.querySelector('.slider-dots');
+       const prevButton = document.querySelector('.prev-button');
+       const nextButton = document.querySelector('.next-button');
+       
+       let currentIndex = 0;
+       const slideCount = slides.length;
+
+       // Create dots
+       slides.forEach((_, index) => {
+           const dot = document.createElement('div');
+           dot.classList.add('dot');
+           if (index === 0) dot.classList.add('active');
+           dot.addEventListener('click', () => goToSlide(index));
+           dotsContainer.appendChild(dot);
+       });
+
+       // Initialize slide widths
+       function initializeSlides() {
+           const slideWidth = slides[0].offsetWidth;
+           track.style.width = `${slideWidth * slideCount}px`;
+           slides.forEach(slide => {
+               slide.style.width = `${slideWidth}px`;
+           });
+       }
+
+       // Go to specific slide
+       function goToSlide(index) {
+           currentIndex = index;
+           const offset = -currentIndex * 100;
+           track.style.transform = `translateX(${offset}%)`;
+           updateDots();
+       }
+
+       // Update dots
+       function updateDots() {
+           document.querySelectorAll('.dot').forEach((dot, index) => {
+               dot.classList.toggle('active', index === currentIndex);
+           });
+       }
+
+       // Next slide
+       function nextSlide() {
+           currentIndex = (currentIndex + 1) % slideCount;
+           goToSlide(currentIndex);
+       }
+
+       // Previous slide
+       function prevSlide() {
+           currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+           goToSlide(currentIndex);
+       }
+
+       // Event listeners
+       prevButton.addEventListener('click', prevSlide);
+       nextButton.addEventListener('click', nextSlide);
+
+       // Initialize
+       initializeSlides();
+       window.addEventListener('resize', initializeSlides);
+
+       // Auto-play (optional)
+       setInterval(nextSlide, 5000);
+   });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+<script>
+   const swiper = new Swiper('.testimonial-swiper', {
+       // Optional parameters
+       loop: true,
+       spaceBetween: 30,
+       grabCursor: true,
+       effect: 'slide',
+       
+       // Responsive breakpoints
+       breakpoints: {
+           // when window width is >= 320px
+           320: {
+               slidesPerView: 1,
+               spaceBetween: 20
+           },
+           // when window width is >= 768px
+           768: {
+               slidesPerView: 2,
+               spaceBetween: 30
+           },
+           // when window width is >= 1024px
+           1024: {
+               slidesPerView: 3,
+               spaceBetween: 30
+           }
+       },
+
+       // Auto play
+       autoplay: {
+           delay: 3000,
+           disableOnInteraction: false,
+       },
+       
+       // Navigation arrows
+       navigation: {
+           nextEl: '.swiper-button-next',
+           prevEl: '.swiper-button-prev',
+       },
+       
+       // Pagination
+       pagination: {
+           el: '.swiper-pagination',
+           clickable: true,
+       },
+   });
+</script>
 
 {% endblock %}

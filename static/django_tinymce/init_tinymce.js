@@ -29,11 +29,7 @@
         }
       });
 
-      // replace default prefix of 'empty-form' if used in selector
-      if (mce_conf.selector && mce_conf.selector.includes('__prefix__')) {
-        mce_conf.selector = `#${el.id}`;
-      }
-      else if (!('selector' in mce_conf)) {
+      if (!'selector' in mce_conf) {
         mce_conf['target'] = el;
       }
       if (el.dataset.mceGzConf) {

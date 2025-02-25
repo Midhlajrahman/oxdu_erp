@@ -21,6 +21,7 @@ from .models import (
 class CourseTranslationOptions(TranslationOptions):
     fields = (
         "course_name",
+        "details",
         "description",
         "duration",
         "fees",

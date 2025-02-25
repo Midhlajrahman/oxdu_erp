@@ -20,6 +20,11 @@ from .models import (
     Subscribtion,
     Team,
     Testimonial,
+    Gallery,
+    IndexFooterGallery,
+    BranchFAQ,
+    BranchStory,
+    BranchImage
 )
 
 
@@ -27,8 +32,9 @@ def index(request):
     banner = Banner.objects.all()[:1]
     courses = Course.objects.all()
     testimonials = Testimonial.objects.all()
-    faqs = FAQ.objects.all()
     events = Event.objects.all()
+    branch = Branch.objects.all()
+    footer_gallery = IndexFooterGallery.objects.all()
 
     context = {
         "is_index": True,
@@ -36,7 +42,8 @@ def index(request):
         "testimonials": testimonials,
         "events": events,
         "banners": banner,
-        "faqs": faqs,
+        'branches':branch,
+        'footer_gallery':footer_gallery
     }
     return render(request, "web/index.html", context)
 
@@ -45,11 +52,15 @@ def about(request):
     courses = Course.objects.all()
     teams = Team.objects.all()
     partners = Partner.objects.all()
+    faqs = FAQ.objects.all()
+
     context = {
         "is_about": True,
         "courses": courses,
         "teams": teams,
         "partners": partners,
+        "faqs": faqs,
+
     }
     return render(request, "web/about.html", context)
 
@@ -174,7 +185,7 @@ def career_success(request, slug):
 
 
 def updates(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.all().order_by('-id')
     context = {"is_blog": True, "blogs": blogs}
     return render(request, "web/blog.html", context)
 
@@ -222,6 +233,10 @@ def branches(request):
 def branch_detail(request, slug):
     branch = Branch.objects.get(slug=slug)
     testimonials = Testimonial.objects.filter(branch=branch)
+    course = BranchCourse.objects.filter(branch=branch) 
+    faqs = BranchFAQ.objects.filter(branch=branch)
+    story = BranchStory.objects.filter(branch=branch)
+    branchimage = BranchImage.objects.filter(branch=branch)
     form = ContactForm(request.POST)
     title = "Best Job Oriented Courses | Career-Focused Training at OXDU Integrated Media School"
     if branch.meta_title:
@@ -242,6 +257,10 @@ def branch_detail(request, slug):
         "testimonials": testimonials,
         "is_meta": True,
         "title": title,
+        "courses": course,
+        'faqs':faqs,
+        'stories':story,
+        'branch_images':branchimage
     }
     return render(request, "web/branch-details.html", context)
 
@@ -252,3 +271,10 @@ def login(request):
 
 def register(request):
     return render(request, "web/sign-up.html")
+
+
+def gallery(request):
+    galleries = Gallery.objects.all()
+    context = {"is_gallery": True, "galleries": galleries}
+    return render(request, "web/gallery.html", context)
+

@@ -3,7 +3,7 @@ from import_export.admin import ImportExportActionModelAdmin
 
 from . import models
 
-
+from . models import BranchImage
 class CourseInline(admin.TabularInline):
     model = models.CoursePoint
     extra = 1
@@ -13,6 +13,9 @@ class BranchCourseInline(admin.StackedInline):
     model = models.BranchCourse
     extra = 1
 
+class BranchImageInline(admin.TabularInline):
+    model = BranchImage
+    extra = 1  
 
 @admin.register(models.Course)
 class CourseAdmin(ImportExportActionModelAdmin):
@@ -77,7 +80,7 @@ class BannerAdmin(ImportExportActionModelAdmin):
 class BranchAdmin(ImportExportActionModelAdmin):
     list_display = ("branch_name", "location", "order")
     prepopulated_fields = {"slug": ("branch_name",)}
-    inlines = [BranchCourseInline]
+    inlines = [BranchCourseInline,BranchImageInline]
 
 
 @admin.register(models.CourseAppointment)
@@ -108,3 +111,20 @@ class PlacementAdmin(ImportExportActionModelAdmin):
 @admin.register(models.Certification)
 class CertificationAdmin(ImportExportActionModelAdmin):
     list_display = ("title",)
+
+
+@admin.register(models.Gallery)
+class GalleryAdmin(ImportExportActionModelAdmin):
+    list_display = ("title",)
+
+@admin.register(models.IndexFooterGallery)
+class IndexFooterGalleryAdmin(ImportExportActionModelAdmin):
+    list_display = ("name",)
+
+@admin.register(models.BranchFAQ)
+class BranchFaqAdmin(ImportExportActionModelAdmin):
+    list_display = ("question","answer")
+
+@admin.register(models.BranchStory)
+class BranchStoryAdmin(ImportExportActionModelAdmin):
+    list_display = ("title","image")

@@ -1,188 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="dark" data-toggled="close">
 
 <head>
-    {% load static i18n %}
-    {% get_current_language as LANGUAGE_CODE %}
 
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block meta %}
-    <!-- Primary Meta Tags -->
-    <title>Best Job Oriented Courses | Career-Focused Training at OXDU Integrated Media School</title>   
-    <meta name="title" content="{{meta.meta_title}}" />
-    <meta name="description" content="{{meta.meta_description}}" />
-    {% endblock meta %}
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> {% block title %}{{app_settings.site_title}}{% endblock %} </title>
+    <meta content="{% block description %}{{app_settings.site_title}}{% endblock %}" name="description">
+  <meta content="{{author}}" name="author">
+  <meta name="keywords" content="" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://oxdu.in/" />
-    <meta property="og:title" content="{{meta.og_title}}" />
-    <meta property="og:description" content="{{meta.og_description}}" />
-    <meta property="og:image" content="https://oxdu.in/{{meta.og_image.url}}" />
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="{% static 'static/app/images/favicons/browserconfig.xml' %}?v=1.8">
+  <meta name="theme-color" content="#ffffff">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://oxdu.in/" />
-    <meta property="twitter:title" content="{{meta.og_title}}" />
-    <meta property="twitter:description" content="{{meta.og_description}}" />
-    <meta property="twitter:image" content="https://oxdu.in/{{meta.og_image.url}}" />
-
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'web/img/logo/logo.svg' %}?v=1.4">
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{% static 'web/css/bootstrap.css' %}?v=1.4">
-    <link rel="stylesheet" href="{% static 'web/css/meanmenu.css' %}?v=1.4">
-    <link rel="stylesheet" href="{% static 'web/css/animate.css' %}?v=1.4">
-    <link rel="stylesheet" href="{% static 'web/css/swiper-bundle.css' %}?v=1.4">
-    <link rel="stylesheet" href="{% static 'web/css/backtotop.css' %}?v=1.4">
-    <link rel="stylesheet" href="{% static 'web/css/magnific-popup.css' %}?v=1.4">
-    <link rel="stylesheet" href="{% static 'web/css/nice-select.css' %}?v=1.4">
-    <link rel="stylesheet" href="{% static 'web/css/font-awesome-pro.css' %}?v=1.4">
-    <link rel="stylesheet" href="{% static 'web/css/spacing.css' %}?v=1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{app_settings.favicon}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{app_settings.favicon}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{app_settings.favicon}}">
+  <link rel="manifest" href="{% static 'app/images/favicon/site.webmanifest' %}">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
     
-    <link rel="stylesheet" href="{% static 'web/css/style.css' %}?v=1.4">
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'app/assets/images/brand-logos/favicon.ico' %}" type="image/x-icon">
+    {% block css %}
+    <!-- Main Theme Js -->
+    <script src="{% static 'app/assets/js/authentication-main.js' %}"></script>
+    
+    <!-- Bootstrap Css -->
+    <link id="style" href="{% static 'app/assets/libs/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" >
 
-       <!-- Google Tag Manager -->
-       <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-         })(window,document,'script','dataLayer','GTM-P4HQHGFK');</script>
-         <!-- End Google Tag Manager -->
+    <!-- Style Css -->
+    <link href="{% static 'app/assets/css/styles.min.css' %}" rel="stylesheet" >
 
-    <!-- Meta Pixel Code new -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1023595492097207');
-        fbq('track', 'PageView');
-    </script>
-    <noscript>
-        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1023595492097207&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Meta Pixel Code -->
+    <!-- Icons Css -->
+    <link href="{% static 'app/assets/css/icons.css' %}" rel="stylesheet" >
+   {% endblock css %}
 </head>
-   
 
-<body class="{{LANGUAGE_CODE}}">
-   
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P4HQHGFK"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-      <!-- End Google Tag Manager (noscript) -->
-   
-   <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-    <![endif]-->
+<body class="error-1">
 
-   <!-- back to top start -->
-   <div class="progress-wrap">
-      <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-      </svg>
-   </div>
-   <!-- back to top end -->
-   <!-- JS here -->
-   {% include 'web/partials/header.html' %}
+    {% block body %}{% endblock body %}
 
+    
+   {% block js %}
+    <!-- Bootstrap JS -->
+    <script src="{% static 'app/assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-
-   <main>
-      <!-- breadcrumb area start -->
-      <section class="pt-20">
-         <div class="container">
-            <div class="row">
-               <div class="breadcrumb__list breadcrumb__list-2 mb-10">
-                  <span><a href="{% url 'web:index' %}">Home</a></span>
-                  <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
-                  <span>Login</span>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- breadcrumb area end -->
-
-      <!-- sign up area start -->
-      <section class="signup__area p-relative z-index-1 pt-100 pb-145">
-         <div class="container">
-            <div class="row">
-               <div class="col-xxl-8 offset-xxl-2 col-xl-8 offset-xl-2">
-                  <div class="section__title-wrapper text-center mb-55">
-                     <h2 class="section__title">Sign in to get started.</h2>
-
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
-                  <div class="sign__wrapper white-bg">
-                     <div class="sign__header mb-35 mx-auto">
-                        <img src="/static/web/img/logo/logo.svg?v=1.0" alt="" style="height: 50px;">
-                     </div>
-                     <div class="sign__form">
-                        {% block content %}
-                        
-                        {% endblock content %}
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-      <!-- sign up area end -->
-
-
-   </main>
-
-   {% include 'web/partials/footer.html' %}
-
-
-
-   <script type="text/javascript" src="{% static 'web/js/vendor/jquery.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/vendor/waypoints.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/bootstrap-bundle.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/meanmenu.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/swiper-bundle.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/magnific-popup.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/parallax.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/backtotop.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/nice-select.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/wow.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/isotope-pkgd.js' %}"></script>
-   <script type="text/javascript" src="{% static 'web/js/imagesloaded-pkgd.js' %}"></script>
-   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
-   <script type="text/javascript" src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   <script type="text/javascript" src="{% static 'web/js/ajax-form.js' %}"></script>
-
-   <script src="{% static 'web/js/main.js' %}?v=1.4"></script>
-   <script src="{% static 'web/js/course-select.js' %}?v=1.4"></script>
-   {% block js %} {% endblock js %}
-   <script>
-      const observer = lozad();
-      observer.observe();
-
-      $(document).ready(function () {
-         $('#langSelector').change(function () {
-            var lang = $(this).val();
-            var active_lang = "{{LANGUAGE_CODE}}";
-            var url = $(this).data('url');
-            var new_url = is_lang_active(url, active_lang) ? url.replace(active_lang, lang) : url + lang + '/';
-            window.location.href = new_url;
-         });
-
-         function is_lang_active(url, active_lang) {
-            return url.includes(active_lang);
-         }
-      });
-   </script>
+    <!-- Show Password JS -->
+    <script src="{% static 'app/assets/js/show-password.js' %}"></script>
+    {% endblock js %}
 </body>
 
 </html>

@@ -28,7 +28,8 @@ urlpatterns = [
     path("set_language/", set_language, name="set_language"),
     path("placements/", views.placement, name="placement"),
     path("certifications/", views.certification, name="certification"),
+    path("gallery/", views.gallery, name="gallery"),
     # authenticaion
-    path("login/", views.login, name="login"),
-    path("register/", views.register, name="register"),
+    # path("login/", views.login, name="login"),
+    # path("register/", views.register, name="register"),
 ]

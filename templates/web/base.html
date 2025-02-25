@@ -29,8 +29,13 @@
     <meta property="twitter:description" content="{{meta.og_description}}" />
     <meta property="twitter:image" content="https://oxdu.in/{{meta.og_image.url}}" />
 
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'web/img/logo/logo.svg' %}?v=1.5">
-
+    {% comment %} <link rel="shortcut icon" type="image/x-icon" href="{% static 'web/img/logo/logo.svg' %}?v=1.5"> {% endcomment %}
+    <link rel="icon" type="image/png" href="{% static 'web/img/favicon/favicon-96x96.png' %}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'web/img/favicon//favicon.svg' %}" />
+    <link rel="shortcut icon" href="{% static 'web/img/favicon//favicon.ico' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'web/img/favicon//apple-touch-icon.png' %}" />
+    <link rel="manifest" href="{% static 'web/img/favicon//site.webmanifest' %}" />
+    {% block css_plugins %}{% endblock %}
     <!-- CSS here -->
     <link rel="stylesheet" href="{% static 'web/css/bootstrap.css' %}?v=1.5">
     <link rel="stylesheet" href="{% static 'web/css/meanmenu.css' %}?v=1.5">
@@ -41,8 +46,11 @@
     <link rel="stylesheet" href="{% static 'web/css/nice-select.css' %}?v=1.5">
     <link rel="stylesheet" href="{% static 'web/css/font-awesome-pro.css' %}?v=1.5">
     <link rel="stylesheet" href="{% static 'web/css/spacing.css' %}?v=1.5">
-    
     <link rel="stylesheet" href="{% static 'web/css/style.css' %}?v=1.5.1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100..800&display=swap" rel="stylesheet">
 
 
      <!-- Google Tag Manager -->
@@ -54,7 +62,7 @@
     <!-- End Google Tag Manager -->
     
 
-    <!-- Meta Pixel Code new -->
+    <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -64,13 +72,13 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1023595492097207');
+        fbq('init', '511860291715365');
         fbq('track', 'PageView');
-    </script>
-    <noscript>
-        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1023595492097207&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Meta Pixel Code -->
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=511860291715365&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Meta Pixel Code -->
 </head>
 
     

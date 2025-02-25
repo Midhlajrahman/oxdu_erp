@@ -1,0 +1,63 @@
+.table>thead>tr>th,
+.table>thead>tr>th a {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+
+#div_id_is_active {
+    display: none;
+}
+
+.asteriskField {
+    color: red;
+}
+
+.header-content-right {
+    gap: 2px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    /* Remove spinners for Firefox */
+}
+
+.custom .table tbody td{
+    padding: 10px;
+}
+
+.custom-input{
+    border: none !important;
+    background: none !important;
+    width: 100% !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+}
+
+
+.bordered-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    position: relative;
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+.bordered-container h5 {
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background: white;
+    padding: 0 10px;
+    margin: 0;
+}
+input[readonly] {
+    background-color: #f0f0f0; /* Set your desired background color */
+    color: #333; /* Optional: Adjust text color for better contrast */
+    cursor: not-allowed; /* Optional: Indicate the field is not editable */
+}

@@ -346,5 +346,48 @@
    {% endif %}
 
 </main>
-
+<section class="faq__area pt-20 pb-70">
+   <div class="container">
+      <div class="row">
+         <div class="col-xxl-5 col-xl-5 col-lg-5">
+            <div class="faq__wrapper pr-25">
+               <div class="section__title-wrapper mb-5">
+                  <span class="section__title-pre-3">{% translate 'Learn how to get started' %}</span>
+                  <h2 class="section__title section__title-44">{% translate 'Frequently Asked Questions' %}</h2>
+               </div>
+               <p>{% blocktrans %}
+                  Our FAQs aim to streamline the user experience, offering clarity and efficiency by addressing common concerns upfront.
+                  Whether you're a customer seeking product details, a user navigating a website, or a member of our community looking for
+                  guidance, our Frequently Asked Questions section is your go-to source for concise, informative responses, simplifying
+                  your journey and enhancing your understanding.
+                  {% endblocktrans %}</p>
+            </div>
+         </div>
+         <div class="col-xxl-7 col-xl-7 col-lg-7">
+            <div class="faq__item-wrapper pl-100">
+               <div class="faq__accordion">
+                  <div class="accordion" id="faqaccordion">
+                     {% for faq in faqs %}
+                     <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq{{faq.id}}">
+                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapse{{faq.id}}" aria-expanded="false" aria-controls="collapse{{faq.id}}">
+                              {{faq.question}}
+                           </button>
+                        </h2>
+                        <div id="collapse{{faq.id}}" class="accordion-collapse collapse" aria-labelledby="faq{{faq.id}}"
+                           data-bs-parent="#faqaccordion">
+                           <div class="accordion-body">
+                              <p>{{faq.answer}}</p>
+                           </div>
+                        </div>
+                     </div>
+                     {% endfor %}
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
 {% endblock %}

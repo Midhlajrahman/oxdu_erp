@@ -10,7 +10,30 @@
 }
 }
 {% endif %}
+
+.row {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.course__item-2 {
+   display: flex;
+   flex-direction: column;
+   height: 100%; /* Ensures uniform height */
+}
+
+.course__content-2 {
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+   justify-content: space-between; /* Pushes the button to the bottom */
+}
+
+.tp-btn-9 {
+   margin-top: auto; /* Ensures the button stays at the bottom */
+}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Yrsa:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 <main>
    <!-- slider area start -->
    <section class="slider__area">
@@ -25,7 +48,7 @@
                   <div class="row">
 
                      <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-sm-10">
-                        <div class="slider__content-3 p-relative z-index-1">
+                        <div class="slider__content-3 p-relative z-index-1  slider__content_new  slider-position">
                            <span data-animation="fadeInUp" data-delay=".3s">
                               <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -37,12 +60,12 @@
                               </svg>
                               {{banner.banner_head}}</span>
                            <h2 class="slider__title-3" data-animation="fadeInUp" data-delay=".6s">{{banner.title}}</h2>
-                           <div class="slider__list" data-animation="fadeInUp" data-delay="1.2s">
-                              <ul>
+                           <div class="slider__list banner-content" data-animation="fadeInUp" data-delay="1.2s">
+                              <ul class=''>
                                  {{banner.content|safe}}
                               </ul>
                            </div>
-                           <div class="d-flex flex-wrap">
+                           <div class="d-flex flex-wrap banner-content-btn">
                               <a href="{% url 'web:placement' %}" class="tp-btn-9 mt-20 btn-sm">Placed Students</a>
                               <a href="{% url 'web:certification' %}" class="tp-btn-9 mt-20 btn-sm">Certification</a>
                            </div>
@@ -57,61 +80,201 @@
          {% endfor %}
       </div>
       <div class="gradient_bg">
-         <div class="marquee_sect">
+         <div class="marquee_sect theme-bg-3">
             <span>Oxdu Tech School</span> 
             <span>Oxdu Design School</span>
             <span>Oxdu Digi School</span>
          </div>
       </div>
    </section>
-   <!-- slider area end -->
 
-   <!-- category area start -->
-   <section class="category__area pb-50 pt-75">
+
+   <section class="category__area pt-50 banner-why-us">
       <div class="container">
-         <div class="row align-items-end">
-            <div class="col-xxl-12">
-               <div class="section__title-wrapper mb-60 text-center">
-                  <span class="section__title-pre-3">{% translate 'Featured Courses' %}</span>
-                  <h2 class="section__title section__title-44">
-                     {% translate 'Acquire New Skills to <br> Propel Your Career Forward' %}
-                  </h2>
+       
+        <div class="row g-3"> <!-- Reduced gap for tighter spacing on mobile -->
+       
+   <div class="container">
+      <div class="row">
+
+         {% for banner in banners %}
+         <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-sm-10">
+            <div class="slider__content-3  z-index-1">
+              
+        
+               <div class="slider__list1 banner-content1" data-animation="fadeInUp" data-delay="1.2s">
+                  <ul class='text-black list_mobile'>
+                     {{banner.content|safe}}
+                  </ul>
+               </div>
+               <div class="d-flex flex-wrap banner-content-btn1 justify-content-center">
+                  <a href="{% url 'web:placement' %}" class="tp-btn-9 mt-20 btn-sm  text-center">Placed Students</a>
+                  <a href="{% url 'web:certification' %}" class="tp-btn-9 mt-20 btn-sm  text-center">Certification</a>
                </div>
             </div>
          </div>
+         {% endfor %}
+
+      </div>
+   </div>
+</div>
+</section>
+
+
+
+   <section class="category__area pt-50 pb-50">
+      <div class="container">
+       
+        <div class="row g-3"> <!-- Reduced gap for tighter spacing on mobile -->
+         <h2 class="section__title section__title-44 text-center mb-60">
+            {% translate 'Our Branches' %}
+         </h2>
+          {% for branch in branches %}
+          <div class="col-6 col-lg-4"> <!-- Changed to col-6 for mobile -->
+            <div class="course__item h-100 white-bg transition-3 border rounded d-flex flex-column">
+               <div class="course__content p-2 p-sm-3 flex-grow-1 d-flex flex-column">
+                 <h3 class="course__title text-center mb-3">
+                   <a href="{{branch.get_absolute_url}}">{{branch.branch_name}}</a>
+                 </h3>
+             
+                 <div class="info-container flex-grow-1">
+                   <div class="d-flex align-items-start mb-2">
+                     <span class="icon flex-shrink-0 me-2">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                         <circle cx="12" cy="10" r="3"></circle>
+                       </svg>
+                     </span>
+                     <p class="mb-0 small text-break">{{branch.location}}</p>
+                   </div>
+             
+                   <div class="d-flex align-items-start mb-2">
+                     <span class="icon flex-shrink-0 me-2">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                         <path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                       </svg>
+                     </span>
+                     <p class="mb-0 small text-break"><a href="tel:{{branch.phone_number}}">Click To Call</a></p>
+                   </div>
+                 </div>
+             
+                 <div class="d-grid mt-auto">
+                   <a href="{{branch.get_absolute_url}}" class="tp-btn-7 py-2 text-center">Open</a>
+                 </div>
+               </div>
+             </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    
+   <!-- slider area end -->
+       <!-- about area start -->
+   <section class="about__area  pt-50 pb-50 about_area_mobile p-relative index_about" >
+      <div class="container">
          <div class="row">
-            {% for course in courses %}
-            <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6">
-               <div class="border_wrapper">
-                  <div class="category__item-3 fix transition-3 white-bg mb-30">
-                     <h3 class="category__title-3">{{course.course_name}}</h3>
-                     <div class="category__list">
-                        <ul>
-                           {% for coursepoint in course.get_points %}
-                           <li><a>{{coursepoint.content}}</a></li>
-                           {% endfor %}
-                        </ul>
+            <div class="col-xxl-7 col-xl-7 col-lg-7  order-2 order-lg-1">
+               <div class="about__thumb-wrapper d-sm-flex mr-20 p-relative">
+                  <div class="about__thumb-2 mb-10 w-100">
+                     <img src="{% static 'web/img/about/about-2.jpg' %}" alt="" class="w-100" style="border-radius: 10px;">
+                  </div>
+               </div>
+            </div>
+            <div class="col-xxl-5 col-xl-5 col-lg-5  order-1 order-lg-2">
+               <div class="about__content pl-25 pr-25 home-about">
+                  <div class="section__title-wrapper mb-15">
+                     <h2 class="section__title about-title">{% translate 'Welcome to Oxdu Integrated Media School' %}
+                     </h2>
+                  </div>
+                  <p>{% blocktrans %}
+                     Taking a step up in your career ladder at Oxdu Integrated Media School, Kerala, with our postgraduate diploma courses in
+                     Malappuram. We've established our curriculum based on the basic of education in practice, interactive as well as
+                     future-ready. Be it AI-integrated digital marketing or using your imagination for graphics or master the perfect world
+                     of web development-we will give you all the tools you need.
+                     {% endblocktrans %}</p>
+                     <p>{% blocktrans %}Understanding that the world is moving at the speed of lightning, we are blending artificial
+                        intelligence with hands-on learning in our programs. So, if you are ready to future-proof your career, this is the
+                        right place.{% endblocktrans %}</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- about area end -->
+    <!-- course area start -->
+    <section class="course__area pb-20 pt-5 grey-bg-3">
+      <div class="container">
+         <div class="row">
+            <div class="col-xxl-12">
+               <div class="row align-items-end">
+                  <div class="col-xxl-12">
+                     <div class="section__title-wrapper mb-60 text-center">
+                        <span class="section__title-pre-3"></span>
+                        <h2 class="section__title section__title-44">
+                           {% translate 'Our Courses' %}
+                        </h2>
+                        <p>Some of these programs will find a home inside our syllabi, all designed to match the requirements of the modern employment sector. In our Diploma Courses in Malappuram, we focus on giving you expertise to support your claim of advantage in service or go after a completely new discipline.
+                        </p>
                      </div>
-                     <div class="category__btn-3">
-                        <a href="{{course.get_absolute_url}}" class="tp-btn-9 w-100">View More</a>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xxl-12">
+                     <div class="course__tab-conent">
+                        <div class="tab-content" id="courseTabContent">
+                           <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
+                              <div class="row">
+                                 {% for course in courses %}
+                                 <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6">
+                                    <div class="course__item-2 white-bg transition-3 white-bg mb-30 fix">
+                                       <div class="course__thumb-2 w-img fix">
+                                          <a href="{{course.get_absolute_url}}">
+                                             <img src="{{course.image.url}}" alt="">
+                                          </a>
+                                       </div>
+                                       <div class="course__content-2">
+                                          <h3 class="course__title mt-2">
+                                             <a href="{{course.get_absolute_url}}">{{course.course_name}}</a>
+                                          </h3>
+                                          <p class="mb-2">
+                                          {% for coursepoint in course.get_points %}
+                                       
+                                             <li>{{coursepoint.content}}</li>
+                                          {% endfor %}
+                                       </p>
+                                          <a href="{{course.get_absolute_url}}" class="tp-btn-9 w-50 mt-30">Read More</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 {% endfor %}
+                              </div>
+                           </div>
+                           
+                         </div>
                      </div>
                   </div>
                </div>
             </div>
-            {% endfor %}
          </div>
       </div>
    </section>
-   <!-- category area end -->
+   <!-- course area end -->
+
+
 
    <!-- course area start -->
    {% if events %}
-   <section class="course__area grey-bg-3 pt-50 pb-50">
+   <section class="course__area grey-bg-3 pt-5 pb-50">
       <div class="container">
          <div class="row">
             <div class="col-xxl-12">
-               <div class="section__title-wrapper mb-60 text-center">
-                  <span class="section__title-pre-3">{% translate 'Enhance Your IT Journey' %}</span>
+               <div class="section__title-wrapper  text-center">
+             
                   <h2 class="section__title section__title-44">
                      {% translate 'Discover Our Upcoming Free <br> Online Workshops' %}
                   </h2>
@@ -121,8 +284,8 @@
          <div class="row">
             {% for event in events %}
             <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6">
-               <div class="course__item white-bg transition-3 mb-30">
-                  <div class="course__thumb w-img fix">
+               <div class="course__item course__item1 white-bg transition-3 mb-30">
+                  <div class="course__thumb w-img w-img1 fix">
                      <a href="{{event.get_absolute_url}}">
                         <img src="{{event.image.url}}" alt="">
                      </a>
@@ -133,7 +296,7 @@
                      </h3>
                      <p class="mb-2">{{event.details|truncatechars:"155"}}</p>
                      
-                     <div class="d-flex flex-wrap">
+                     <div class="d-flex flex-wrap" style="padding: 10px;">
                         <span class="flex_item"><i class="fa fa-calendar"></i> {{event.date}}</span>
                         <span class="flex_item"><i class="fa fa-clock"></i> {{event.start_time}}</span>
                         <span class="flex_item"><i class="fa fa-comments"></i> {{event.platform}}</span>
@@ -152,9 +315,9 @@
    <!-- course area end -->
 
    <!-- certificate area start -->
-   <section class="certificate__area pt-55 pb-55">
+   <!-- <section class="certificate__area pt-55 pb-55 ">
       <div class="container">
-         <div class="certificate__inner grey-bg-9 p-relative">
+         <div class="certificate__inner grey-bg-9 p-relative theme-bg-3 ">
             <div class="certificate__thumb">
                <img src="{% static 'web/img/certificate/certificate.png' %}" alt="">
             </div>
@@ -162,16 +325,17 @@
                <div class="col-xxl-7">
                   <div class="certificate__content">
                      <div class="section__title-wrapper mb-10">
-                        <span class="section__title-pre-3">{% translate 'Empower Yourself Through Our Intensive Training' %}</span>
-                        <h2 class="section__title section__title-44">
+                        <h2 class="section__title section__title-44 text-light">
                            {% blocktrans %}
-                           You can be your own <br> Guiding star with our help!
+                           Why Oxdu Integrated Media School?
                            {% endblocktrans %}
                         </h2>
                      </div>
-                     <p>{% blocktrans %}
-                        At our digital learning center, you become the guiding star of your own journey, and we're here to assist you every step
-                        of the way. Our experts seamlessly combine their expertise and passion to convey knowledge effectively.
+                     <p class="text-light">{% blocktrans %}
+                        Oxdu Integrated Media School differs when it comes to professional courses in Malappuram, and that's why. To cut it
+                        short, our programs are based on real-world applications. In other words, you wouldn't be studying just theories but
+                        then applying them in projects and scenarios that will closely mirror actual industry needs. From day one, you will be
+                        developing the skills that employers need.
                         {% endblocktrans %}
                      </p>
                      <div class="certificate__links d-sm-flex align-items-center">
@@ -183,12 +347,13 @@
             </div>
          </div>
       </div>
-   </section>
+   </section> -->
    <!-- certificate area end -->
 
    <!-- price area start -->
-   <section class="price__area pb-30">
-      <div class="container">
+  
+   
+      <!-- <div class="container">
          <div class="row">
             <div class="col-xxl-12">
                <div class="section__title-wrapper text-center mb-60">
@@ -289,61 +454,19 @@
             </div>
 
          </div>
-      </div>
+      </div> -->
    </section>
    <!-- price area end -->
 
    <!-- faq area start -->
-   <section class="faq__area pt-20 pb-70">
-      <div class="container">
-         <div class="row">
-            <div class="col-xxl-5 col-xl-5 col-lg-5">
-               <div class="faq__wrapper pr-25">
-                  <div class="section__title-wrapper mb-5">
-                     <span class="section__title-pre-3">{% translate 'Learn how to get started' %}</span>
-                     <h2 class="section__title section__title-44">{% translate 'Frequently Asked Questions' %}</h2>
-                  </div>
-                  <p>{% blocktrans %}
-                     Our FAQs aim to streamline the user experience, offering clarity and efficiency by addressing common concerns upfront.
-                     Whether you're a customer seeking product details, a user navigating a website, or a member of our community looking for
-                     guidance, our Frequently Asked Questions section is your go-to source for concise, informative responses, simplifying
-                     your journey and enhancing your understanding.
-                     {% endblocktrans %}</p>
-               </div>
-            </div>
-            <div class="col-xxl-7 col-xl-7 col-lg-7">
-               <div class="faq__item-wrapper pl-100">
-                  <div class="faq__accordion">
-                     <div class="accordion" id="faqaccordion">
-                        {% for faq in faqs %}
-                        <div class="accordion-item">
-                           <h2 class="accordion-header" id="faq{{faq.id}}">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                 data-bs-target="#collapse{{faq.id}}" aria-expanded="false" aria-controls="collapse{{faq.id}}">
-                                 {{faq.question}}
-                              </button>
-                           </h2>
-                           <div id="collapse{{faq.id}}" class="accordion-collapse collapse" aria-labelledby="faq{{faq.id}}"
-                              data-bs-parent="#faqaccordion">
-                              <div class="accordion-body">
-                                 <p>{{faq.answer}}</p>
-                              </div>
-                           </div>
-                        </div>
-                        {% endfor %}
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
+ 
    <!-- faq area end -->
-
+   {% for footer in footer_gallery  %}
+   
    <div>
-      <img class="footer-img img-fluid w-100" src="{% static 'web/img/footer.png' %}">
+      <img class="footer-img img-fluid w-100" src="{{footer.image.url}}">
    </div>
-
+   {% endfor %}
 </main>
 
 {% endblock %}
@@ -360,4 +483,30 @@ $('.marquee_sect').marquee({
    startVisible: true,
 });
 </script>
+<script>
+   function setEqualHeight() {
+      let maxHeight = 0;
+      const cards = document.querySelectorAll('.course__item-2');
+  
+      // Reset heights before recalculating
+      cards.forEach(card => {
+          card.style.height = 'auto';
+      });
+  
+      // Find max height
+      cards.forEach(card => {
+          maxHeight = Math.max(maxHeight, card.offsetHeight);
+      });
+  
+      // Apply max height
+      cards.forEach(card => {
+          card.style.height = maxHeight + 'px';
+      });
+  }
+  
+  // Run on load and window resize
+  window.addEventListener('load', setEqualHeight);
+  window.addEventListener('resize', setEqualHeight);
+</script>
+
 {% endblock %}

@@ -4,25 +4,32 @@ from tinymce.models import HTMLField
 from versatileimagefield.fields import VersatileImageField
 
 
+
 class Course(models.Model):
+    order = models.PositiveIntegerField(null=True, unique=True)
     MODE_CHOICES = [
-        ("Online", "Online"),
-        ("Offline", "Offline"),
+    ('Online','Online'),
+    ('Offline','Offline'),
     ]
     course_name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     image = VersatileImageField("Course", upload_to="course/")
+    details = models.TextField(null=True, blank=True)
     description = HTMLField(null=True, blank=True)
     seat = models.IntegerField()
-    duration = models.CharField(max_length=10)
+    duration = models.CharField(max_length=100)
     fees = models.CharField(max_length=50)
     syllabus = models.FileField(upload_to="syllabus", blank=True, null=True)
-    mode = models.CharField(
-        max_length=128, choices=MODE_CHOICES, blank=True, null=True, default="Offline"
-    )
-
+    mode =  models.CharField(max_length=128,choices=MODE_CHOICES,blank=True, null=True,default='Offline')
+    #meta
+    keyword = models.TextField( blank=True, null=True)
+    meta_title = models.CharField(max_length=155, blank=True, null=True)
+    meta_description = models.CharField(max_length=165, blank=True, null=True)
     def __str__(self):
         return self.course_name
+    
+    class Meta:
+        ordering = ("order",)
 
     def get_absolute_url(self):
         return reverse("web:course_detail", kwargs={"slug": self.slug})
@@ -66,7 +73,6 @@ class Career(models.Model):
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     branch = models.CharField(max_length=100)
     date = models.DateField(auto_now=False, auto_now_add=False)
-    summary = models.TextField()
     description = HTMLField(null=True, blank=True)
 
     def get_absolute_url(self):
@@ -83,9 +89,10 @@ class Blog(models.Model):
     person_name = models.CharField(max_length=50)
     image = VersatileImageField("Blog", upload_to="blog/")
     description = HTMLField(null=True, blank=True)
-
+    
     meta_title = models.CharField(max_length=120, null=True, blank=True)
     meta_description = models.TextField(null=True, blank=True)
+    
 
     def get_absolute_url(self):
         return reverse("web:update_detail", kwargs={"slug": self.slug})
@@ -135,10 +142,6 @@ class CourseApplication(models.Model):
 
 class Subscribtion(models.Model):
     email = models.EmailField(max_length=254)
-
-    class Meta:
-        verbose_name = "Subscription"
-        verbose_name_plural = "Subscriptions"
 
     def __str__(self):
         return self.email
@@ -241,6 +244,20 @@ class Contact(models.Model):
         return self.name
 
 
+class Endorsement(models.Model):
+    name = models.CharField(max_length=128)
+    designation = models.CharField(max_length=128)
+    media = models.FileField(upload_to="media", max_length=500)
+
+    def is_video(self):
+        if self.media.url.endswith(".mp4"):
+            return True
+        return False
+
+    def __str__(self):
+        return self.name
+
+
 class FAQ(models.Model):
     question = models.CharField(max_length=500)
     answer = models.TextField()
@@ -294,12 +311,63 @@ class Certification(models.Model):
     title = models.CharField(max_length=128)
     description = models.TextField()
     image = models.FileField(upload_to="certificates/image")
-    order = models.PositiveIntegerField(default=0)
 
     class Meta:
-        ordering = ("order",)
         verbose_name = "Certification"
         verbose_name_plural = "Certifications"
 
     def __str__(self):
         return self.title
+
+
+class Gallery(models.Model):
+    title = models.CharField(max_length=128)
+    image = models.FileField(upload_to="gallery/image")
+
+    class Meta:
+        verbose_name = "Galery"
+        verbose_name_plural = "Galeries"
+
+    def __str__(self):    
+        return self.title
+    
+class IndexFooterGallery(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to="index_footer_gallery")
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = 'Index Footer Gallery'
+        verbose_name_plural = 'Index Footer Gallery'
+    
+class BranchImage(models.Model):
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
+    image = models.ImageField(
+        upload_to="products/", help_text=" The recommended size is 800x600 pixels."
+    )
+
+
+class BranchFAQ(models.Model):
+    branch = models.ForeignKey(Branch,on_delete=models.CASCADE)
+    question = models.CharField(max_length=500)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question 
+
+class BranchStory(models.Model):
+    branch = models.ForeignKey(Branch,on_delete=models.CASCADE,null=True,blank=True)
+    title = models.CharField(max_length=500)
+    image = VersatileImageField("story", upload_to="story/")
+    
+    meta_title = models.CharField(max_length=120, null=True, blank=True)
+    meta_description = models.TextField(null=True, blank=True)
+    
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = 'Branch Story'
+        verbose_name_plural = "Branch story"

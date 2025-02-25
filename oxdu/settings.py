@@ -19,27 +19,40 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_PLUGINS = [
     "admin_interface",
     "colorfield",
-    "import_export",
-    "crispy_forms",
-    "registration",
+    "compressor",
     "crispy_bootstrap5",
+    "crispy_forms",
     "django_extensions",
+    "django_filters",
+    "django_tables2",
+    "import_export",
+    "registration",
+    "tinymce",
+    "easy_thumbnails",
+    'simple_history',
+    'mptt',
+    "rosetta",
+    "modeltranslation",
+    "versatileimagefield",
+]
+
+DJANGO_APPS = [
     "django.contrib.admin",
+    "django.contrib.humanize",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
+    "user_sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "versatileimagefield",
-    "tinymce",
-    "rosetta",
-    "modeltranslation",
-    "web",
-    "exams",
 ]
+MODULES = ["web", "exams", "employees", "core", "accounts",  "accounting", "branches", "courses", "admission", ]
+
+INSTALLED_APPS = INSTALLED_PLUGINS + DJANGO_APPS + MODULES
+
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -163,10 +176,24 @@ SEND_ACTIVATION_EMAIL = False
 REGISTRATION_EMAIL_SUBJECT_PREFIX = ""
 
 REGISTRATION_OPEN = True
-LOGIN_URL = "/app/accounts/login/"
-LOGOUT_URL = "/app/accounts/logout/"
-LOGIN_REDIRECT_URL = "/admin/"
+LOGIN_URL = "/accounts/login/"
+LOGOUT_URL = "/accounts/logout/"
+LOGIN_REDIRECT_URL = "/core/"
 
+SITE_ID = 1
+if DEBUG is False:
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True
+    CSRF_COOKIE_SECURE = True
+    COMPRESS_ENABLED = False
+    X_FRAME_OPTIONS = "DENY"
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    HTML_MINIFY = True
+    KEEP_COMMENTS_ON_MINIFYING = False
+    
 EMAIL_BACKEND = config(
     "EMAIL_BACKEND", default="django.core.mail.backends.smtp.EmailBackend"
 )
@@ -184,3 +211,9 @@ ADMIN_EMAIL = config("ADMIN_EMAIL", default=EMAIL_HOST_USER)
 
 
 CSRF_TRUSTED_ORIGINS = ["https://8000-gedexomainse-production-cete37r1o1j.ws-us110.gitpod.io"]
+
+THUMBNAIL_ALIASES = {'': {'avatar': {'size': (50, 50), 'crop': True}}}
+
+GRAPH_MODELS = {'all_applications': True, 'group_models': True}
+
+AUTH_USER_MODEL = "accounts.User"

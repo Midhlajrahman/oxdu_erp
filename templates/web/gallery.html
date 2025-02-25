@@ -1,0 +1,73 @@
+{% extends 'web/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block css_plugins %}
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+{% endblock css_plugins %}
+{% block content %}
+
+
+<main>
+
+   <!-- breadcrumb area start -->
+   <section class="pt-20 breadcrumb__area">
+      <div class="container">
+         <div class="row">
+            <div class="breadcrumb__list breadcrumb__list-2 mb-10">
+               <span><a href="{% url 'web:index' %}">Home</a></span>
+               <span class="dvdr"><i class="fa-regular fa-angle-right"></i></span>
+               <span>Gallery</span>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- breadcrumb area end -->
+
+   <!-- event area start -->
+   <section class="event__area pt-50 pb-80">
+    <div class="container">
+       <div class="row">
+          {% for gallery in galleries %}
+          <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6">
+             <div class="course__item-2 white-bg transition-3 mb-30 border">
+                <div class="course__thumb w-img fix gallery-img">
+                   <a href="{{gallery.image.url}}" data-fancybox="gallery" data-caption="{{gallery.title}}">
+                      <img src="{{gallery.image.url}}" alt="">
+                   </a>
+                </div>
+             </div>
+          </div>
+          {% endfor %}
+       </div>
+    </div>
+ </section>
+ 
+   <!-- event area end -->
+
+</main>
+
+{% endblock %}
+{% block js %}
+    <!-- Fancybox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script>
+    $(document).ready(function() {
+      $('[data-fancybox="gallery"]').fancybox({
+        loop: true, 
+        buttons: [
+          "zoom",       
+          "slideShow",  
+          "fullScreen", 
+          "thumbs",  
+          "close"
+        ],
+        thumbs: {
+          autoStart: false,
+        }
+      });
+    });
+  </script>
+  
+  
+{% endblock js %}

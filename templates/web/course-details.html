@@ -1,5 +1,10 @@
 {% extends 'web/base.html' %}
 {% load static %}
+{% block meta %}        
+        <meta name="keywords" content="{{course.keyword}}">
+        <meta name="title" content="{{course.meta_title}}" />
+        <meta name="description" content="{{course.meta_description}}" />
+{% endblock meta %}
 {% load i18n %}
 {% block content %}
 
@@ -64,8 +69,8 @@
                   </div>
                   
                   {% if course.image %}
-                  <div class="course__img w-img mb-30">
-                     <img src="{{course.image.url}}" alt="">
+                  <div class="course__img w-img1 mb-30" style="object-fit: fill !important;">
+                      <img src="{{course.image.url}}" alt="">
                   </div>
                   {% endif %}
 
