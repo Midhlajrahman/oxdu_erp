@@ -163,7 +163,7 @@
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item {% if is_master %} active {% endif %}">
                         <i class="fe fe-airplay side-menu__icon"></i>
-                        <span class="side-menu__label">Masters</span>
+                        <span class="side-menu__label">Admission</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
                     <ul class="slide-menu child1">
@@ -200,6 +200,18 @@
                         </li>
                         <li class="slide">
                             <a href="{% url 'employees:designation_list' %}" class="side-menu__item">Designations</a>
+                        </li>
+
+                        <li class="slide">
+                            <a href="{% url 'core:academicyear_list' %}" class="side-menu__item">Academic Year</a>
+                        </li>
+
+                        <li class="slide">
+                            <a href="{% url 'admission:batch_list' %}" class="side-menu__item">Batch</a>
+                        </li>
+
+                        <li class="slide">
+                            <a href="{% url 'masters:course_list' %}" class="side-menu__item">Course</a>
                         </li>
                         
                     </ul>

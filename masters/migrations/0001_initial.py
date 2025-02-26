@@ -16,7 +16,47 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="HistoricalCourse",
+            name="State",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created", models.DateTimeField(auto_now_add=True, db_index=True)),
+                ("updated", models.DateTimeField(auto_now=True)),
+                (
+                    "is_active",
+                    models.BooleanField(
+                        choices=[(True, "Yes"), (False, "No")],
+                        default=True,
+                        verbose_name="Mark as Active",
+                    ),
+                ),
+                ("name", models.CharField(max_length=120)),
+                (
+                    "creator",
+                    models.ForeignKey(
+                        blank=True,
+                        editable=False,
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="%(app_label)s_%(class)s_creator",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+            ],
+            options={
+                "ordering": ["-created"],
+                "abstract": False,
+            },
+        ),
+        migrations.CreateModel(
+            name="HistoricalState",
             fields=[
                 (
                     "id",
@@ -37,8 +77,7 @@ class Migration(migrations.Migration):
                         verbose_name="Mark as Active",
                     ),
                 ),
-                ("name", models.CharField(max_length=180)),
-                ("description", models.TextField(blank=True, null=True)),
+                ("name", models.CharField(max_length=120)),
                 ("history_id", models.AutoField(primary_key=True, serialize=False)),
                 ("history_date", models.DateTimeField(db_index=True)),
                 ("history_change_reason", models.CharField(max_length=100, null=True)),
@@ -72,52 +111,11 @@ class Migration(migrations.Migration):
                 ),
             ],
             options={
-                "verbose_name": "historical course",
-                "verbose_name_plural": "historical courses",
+                "verbose_name": "historical state",
+                "verbose_name_plural": "historical states",
                 "ordering": ("-history_date", "-history_id"),
                 "get_latest_by": ("history_date", "history_id"),
             },
             bases=(simple_history.models.HistoricalChanges, models.Model),
-        ),
-        migrations.CreateModel(
-            name="Course",
-            fields=[
-                (
-                    "id",
-                    models.BigAutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                ("created", models.DateTimeField(auto_now_add=True, db_index=True)),
-                ("updated", models.DateTimeField(auto_now=True)),
-                (
-                    "is_active",
-                    models.BooleanField(
-                        choices=[(True, "Yes"), (False, "No")],
-                        default=True,
-                        verbose_name="Mark as Active",
-                    ),
-                ),
-                ("name", models.CharField(max_length=180)),
-                ("description", models.TextField(blank=True, null=True)),
-                (
-                    "creator",
-                    models.ForeignKey(
-                        blank=True,
-                        editable=False,
-                        null=True,
-                        on_delete=django.db.models.deletion.PROTECT,
-                        related_name="%(app_label)s_%(class)s_creator",
-                        to=settings.AUTH_USER_MODEL,
-                    ),
-                ),
-            ],
-            options={
-                "ordering": ["-created"],
-                "abstract": False,
-            },
         ),
     ]

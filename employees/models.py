@@ -8,6 +8,7 @@ from core.choices import EMPLOYMENT_TYPE_CHOICES
 from core.choices import GENDER_CHOICES
 from core.choices import MARITAL_CHOICES
 from core.choices import RESIDENCE_CHOICES
+from core.choices import RELIGION_CHOICES
 
 from django.db import models
 from django.urls import reverse_lazy
@@ -83,7 +84,7 @@ class Employee(BaseModel):
     mobile = models.CharField(max_length=128, blank=True, null=True)
     whatsapp = models.CharField(max_length=128, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
-    religion = models.CharField(max_length=128, blank=True, null=True)
+    religion = models.CharField(max_length=128, choices=RELIGION_CHOICES, blank=True, null=True)
     experience = models.TextField(null=True, blank=True)
     qualifications = models.TextField(null=True, blank=True)
     photo = ThumbnailerImageField(blank=True, null=True, upload_to="employees/photos/")

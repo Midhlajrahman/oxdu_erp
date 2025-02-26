@@ -1,11 +1,12 @@
 from django.db import models
-from django.urls import reverse
+from core.base import BaseModel
+from django.urls import reverse, reverse_lazy
 from tinymce.models import HTMLField
 from versatileimagefield.fields import VersatileImageField
 
 
 
-class Course(models.Model):
+class Course(BaseModel):
     order = models.PositiveIntegerField(null=True, unique=True)
     MODE_CHOICES = [
     ('Online','Online'),
@@ -25,14 +26,28 @@ class Course(models.Model):
     keyword = models.TextField( blank=True, null=True)
     meta_title = models.CharField(max_length=155, blank=True, null=True)
     meta_description = models.CharField(max_length=165, blank=True, null=True)
+    
     def __str__(self):
         return self.course_name
     
     class Meta:
         ordering = ("order",)
+        
+    @staticmethod
+    def get_list_url():
+        return reverse_lazy("masters:course_list")
 
     def get_absolute_url(self):
-        return reverse("web:course_detail", kwargs={"slug": self.slug})
+        return reverse_lazy("masters:course_detail", kwargs={"pk": self.pk})
+
+    def get_update_url(self):
+        return reverse_lazy("masters:course_update", kwargs={"pk": self.pk})
+    
+    def get_delete_url(self):
+        return reverse_lazy("masters:course_delete", kwargs={"pk": self.pk})
+
+    # def get_absolute_url(self):
+    #     return reverse("web:course_detail", kwargs={"slug": self.slug})
 
     def get_points(self):
         return CoursePoint.objects.filter(course=self)

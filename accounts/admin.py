@@ -39,7 +39,7 @@ class MyUserAdmin(BaseUserAdmin, ImportExportActionModelAdmin):
 
     fieldsets = (
         ("Basic Info", {"fields": ("email", "password")}),
-        ("Personal info", {"fields": ("first_name", "last_name", "usertype", "branch")}),
+        ("Personal info", {"fields": ("first_name", "last_name", "usertype",)}),
         ("Permissions", {"fields": ("is_active", "is_staff", "is_superuser")}),
         ("Groups", {"fields": ("groups", "user_permissions")}),
         ("Important dates", {"fields": ("last_login", "date_joined")}),

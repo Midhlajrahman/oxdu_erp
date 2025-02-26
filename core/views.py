@@ -2,7 +2,7 @@ from core import mixins
 from branches.models import Branch
 from core.models import LockingAccount
 from core.models import LockingGroup
-from core.models import Setting
+from core.models import Setting, AcademicYear
 from branches.tables import BranchTable
 
 from .forms import HomeForm
@@ -24,14 +24,20 @@ class HomeView(mixins.LoginRequiredMixin, mixins.FormView):
     def get_form(self, *args, **kwargs):
         user = self.request.user
         form = super().get_form(*args, **kwargs)
-        if not user.is_superuser:
+        if not user.is_superuser and user.branch:
             form.fields['branch'].initial = user.branch
             form.fields['branch'].queryset = form.fields['branch'].queryset.filter(id=user.branch.id)
         return form
 
     def form_valid(self, form):
-        self.request.session['branch'] = form.cleaned_data['branch'].id
-        self.request.session['academic_year'] = form.cleaned_data['academic_year'].id
+        branch = form.cleaned_data.get('branch')
+        academic_year = form.cleaned_data.get('academic_year')
+        
+        if branch:
+            self.request.session['branch'] = branch.id
+        if academic_year:
+            self.request.session['academic_year'] = academic_year.id
+
         return super().form_valid(form)
 
 
@@ -104,3 +110,45 @@ class AccountSettings(mixins.HybridView):
         return render(request, self.template_name, context)
 
 
+class AcademicYearListView(mixins.HybridListView):
+    model = AcademicYear
+    # table_class = tables.AcademicYearTable
+    permissions = ("branch_manager", "teacher", "admin_staff", "is_superuser")
+    branch_filter = False  
+    
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["can_add"] = True
+        context["new_link"] = reverse_lazy("core:academicyear_create")
+        return context
+    
+class AcademicYearDetailView(mixins.HybridDetailView):
+    model = AcademicYear
+    permissions = ("branch_staff", "teacher", "is_superuser",)
+    
+
+class AcademicYearCreateView(mixins.HybridCreateView):
+    model = AcademicYear
+    permissions = ("is_superuser", "teacher", "branch_staff", )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "New Academic Year"
+        return context
+
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
+    
+
+class AcademicYearUpdateView(mixins.HybridUpdateView):
+    model = AcademicYear
+    permissions = ("is_superuser", "teacher", "branch_staff", )
+
+
+class AcademicYearDeleteView(mixins.HybridDeleteView):
+    model = AcademicYear
+    permissions = ("is_superuser", "teacher", "branch_staff", )

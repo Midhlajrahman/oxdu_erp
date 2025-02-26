@@ -32,7 +32,7 @@ INSTALLED_PLUGINS = [
     "registration",
     "tinymce",
     "easy_thumbnails",
-    'simple_history',
+    # 'simple_history',
     'mptt',
     "rosetta",
     "modeltranslation",
@@ -49,7 +49,7 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-MODULES = ["web", "exams", "employees", "core", "accounts",  "accounting", "branches", "courses", "admission", ]
+MODULES = ["web", "exams", "employees", "core", 'accounts', "accounting", "branches", "courses", "admission", "masters",]
 
 INSTALLED_APPS = INSTALLED_PLUGINS + DJANGO_APPS + MODULES
 
@@ -138,19 +138,42 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 
+# Django Compressor Settings
+COMPRESS_ENABLED = False
+COMPRESS_CSS_HASHING_METHOD = "content"
+COMPRESS_FILTERS = {"css": ["compressor.filters.css_default.CssAbsoluteFilter", "compressor.filters.cssmin.rCSSMinFilter"], "js": ["compressor.filters.jsmin.JSMinFilter"]}
+
+AUTH_USER_MODEL = "accounts.User"
+AUTHENTICATION_BACKENDS = ("django.contrib.auth.backends.ModelBackend",)
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SILENCED_SYSTEM_CHECKS = ["security.W019", "admin.E410"]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+SESSION_ENGINE = "user_sessions.backends.db"
+SESSION_CACHE_ALIAS = "default"
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
+# Internationalization
 LANGUAGE_CODE = "en-us"
-LANGUAGES = [("en", "English"), ("ml", "Malayalam")]
+TIME_ZONE = "Asia/Kolkata"
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+USE_L10N = False
+DATE_INPUT_FORMATS = ("%d/%m/%Y", "%d-%m-%Y", "%d/%m/%y", "%d %b %Y", "%d %b, %Y", "%d %b %Y", "%d %b, %Y", "%d %B, %Y", "%d %B %Y")
+DATETIME_INPUT_FORMATS = ("%d/%m/%Y %H:%M:%S", "%d/%m/%Y %H:%M", "%d/%m/%Y", "%d/%m/%y %H:%M:%S", "%d/%m/%y %H:%M", "%d/%m/%y", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M", "%Y-%m-%d")
+SHORT_DATETIME_FORMAT = "d/m/Y g:i A"
+SHORT_DATE_FORMAT = "d/m/Y"
+
+LANGUAGE_CODE = "en-us"
+LANGUAGES = [("en", "English"), ("ml", "Malauyalam")]
 IS_MONOLINGUAL = False
 MODELTRANSLATION_DEFAULT_LANGUAGE = "en"
 LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
 ROSETTA_SHOW_AT_ADMIN_PANEL = True
-
-TIME_ZONE = "Asia/Kolkata"
-USE_I18N = True
-USE_TZ = True
-
-USE_L10N = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

@@ -8,6 +8,7 @@ from core.choices import GENDER_CHOICES
 from core.choices import RELIGION_CHOICES
 from core.choices import PAYMENT_PERIOD_CHOICES
 from core.choices import ATTENDANCE_STATUS
+from core.choices import MONTH_CHOICES, YEAR_CHOICES
 
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator
@@ -21,6 +22,7 @@ from datetime import datetime
 
 def active_objects():
     return {'is_active': True}
+
 
 class StudentReceipt(BaseModel):
     student = models.ForeignKey("admission.Admission", on_delete=models.PROTECT,related_name = "student")
@@ -94,7 +96,7 @@ def generate_admission_fee_receipt_no():
 
 class Admission(BaseModel):
     branch = models.ForeignKey("branches.Branch", on_delete=models.PROTECT,null=True)
-    user = models.OneToOneField('accounts.User', on_delete=models.CASCADE, related_name="student",null=True)
+    user = models.OneToOneField('accounts.User', on_delete=models.CASCADE, related_name="student",null=True, )
     first_name = models.CharField(max_length=200,null=True)
     last_name = models.CharField(max_length=200, blank=True, null=True)
     date_of_birth = models.DateField(null=True)
@@ -107,13 +109,10 @@ class Admission(BaseModel):
     
     admission_number = models.CharField(max_length=4, null=True, default=generate_admission_no)
     admission_date = models.DateField(default=timezone.now)
-    admission_fees = models.DecimalField(max_digits=14, decimal_places=2, null=True)
-    admission_fee_receipt_no = models.PositiveIntegerField(default=generate_admission_fee_receipt_no,null=True,)
     academic_year = models.ForeignKey("core.AcademicYear", on_delete=models.CASCADE,null=True,)
-    account = models.ForeignKey('accounting.account', on_delete=models.CASCADE, null=True)
     photo = models.FileField(upload_to="admission/documents/", null=True, blank=True)
 
-    # course = models.ForeignKey('web.Course', on_delete=models.CASCADE, limit_choices_to={"is_active": True}, verbose_name="Class to which admission is sought",null=True,)
+    course = models.ForeignKey('web.Course', on_delete=models.CASCADE, limit_choices_to={"is_active": True}, null=True,)
     batch = models.ForeignKey('admission.Batch',on_delete= models.CASCADE,limit_choices_to={"is_active": True}, null=True, blank=True)
     other_details = models.TextField(blank=True, null=True)
 
@@ -157,6 +156,7 @@ class Admission(BaseModel):
 
 
 class Batch(BaseModel):
+    branch = models.ForeignKey("branches.Branch", on_delete=models.CASCADE, null=True)
     academic_year = models.ForeignKey('core.AcademicYear', on_delete=models.CASCADE,blank=True,null=True)
     teacher = models.ForeignKey('employees.Employee', on_delete=models.CASCADE)
     batch_name = models.CharField(max_length=128)
@@ -170,9 +170,6 @@ class Batch(BaseModel):
     
     def get_absolute_url(self):
         return reverse_lazy("admission:batch_detail", kwargs={"pk": self.pk})
-    
-    def get_create_url(self):
-        return reverse_lazy("admission:batch_create", kwargs={"pk": self.pk})
     
     def get_update_url(self):
         return reverse_lazy("admission:batch_update", kwargs={"pk": self.pk})

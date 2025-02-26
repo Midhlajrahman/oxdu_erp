@@ -1,4 +1,4 @@
-from .models import AcademicYear
+from core.models import AcademicYear
 from branches.models import Branch
 from .models import LockingAccount
 from .models import LockingGroup

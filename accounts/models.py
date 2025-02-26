@@ -39,6 +39,7 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True)
     usertype = models.CharField("Permissions", max_length=30, choices=USERTYPE_CHOICES, default="branch_staff")
+    branch = models.ForeignKey("branches.Branch", on_delete=models.PROTECT, null=True)
 
     USERNAME_FIELD = 'email'  # Set email as the username field
     REQUIRED_FIELDS = []  # Remove username from required fields

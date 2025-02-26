@@ -71,4 +71,21 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const courseNameInput = document.getElementById("id_course_name");
+        const slugInput = document.getElementById("id_slug");
+    
+        courseNameInput.addEventListener("input", function () {
+            let slug = courseNameInput.value
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, "")  // Remove special characters
+                .trim()
+                .replace(/\s+/g, "-"); // Replace spaces with hyphens
+            
+            slugInput.value = slug;
+        });
+    });
+</script>
+
 {% endblock content %}

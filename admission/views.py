@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from core import mixins
-from admission .models import Admission
+
+from admission .models import Admission, Batch
 from . import tables
 from .forms import AdmissionForm
 
@@ -20,15 +21,9 @@ class AdmissionDetailView(mixins.HybridDetailView):
     model = Admission
     permissions = ("branch_staff", "teacher", "is_superuser",)
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = "Admission Details"
-        return context
-    
 
 class AdmissionCreateView(mixins.HybridCreateView):
     model = Admission
-    template_name = 'admission/admission_form.html'
     # form_class = AdmissionForm
     permissions = ("is_superuser", "teacher", "branch_staff", )
 
@@ -40,3 +35,52 @@ class AdmissionCreateView(mixins.HybridCreateView):
     def form_invalid(self, form):
         print(form.errors)
         return super().form_invalid(form)
+    
+
+class AdmissionUpdateView(mixins.HybridUpdateView):
+    model = Admission
+    permissions = ("is_superuser", "teacher", "branch_staff", )
+
+
+class AdmissionDeleteView(mixins.HybridDeleteView):
+    model = Admission
+    permissions = ("is_superuser", "teacher", "branch_staff", )
+
+
+class BatchListView(mixins.HybridListView):
+    model = Batch
+    table_class = tables.BatchTable
+    filterset_fields = {'academic_year': ['exact'], }
+    permissions = ("branch_manager", "teacher", "admin_staff" "is_superuser")
+    
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
+    
+class BatchDetailView(mixins.HybridDetailView):
+    model = Batch
+    permissions = ("branch_staff", "teacher", "is_superuser",)
+    
+
+class BatchCreateView(mixins.HybridCreateView):
+    model = Batch
+    permissions = ("is_superuser", "teacher", "branch_staff", )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "New Batch"
+        return context
+
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
+    
+
+class BatchUpdateView(mixins.HybridUpdateView):
+    model = Batch
+    permissions = ("is_superuser", "teacher", "branch_staff", )
+
+
+class BatchDeleteView(mixins.HybridDeleteView):
+    model = Batch
+    permissions = ("is_superuser", "teacher", "branch_staff", )
